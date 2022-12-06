@@ -1,0 +1,3 @@
+#file to ignoee by git
+*.o
+.vscode
