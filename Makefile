@@ -17,3 +17,6 @@ clean:
 
 win_init:win_init.c
 	gcc win_init.c -o win_init.exe -lws2_32
+
+win_list:win_list.c
+	gcc win_list.c -o win_list.exe -liphlpapi -lws2_32 
