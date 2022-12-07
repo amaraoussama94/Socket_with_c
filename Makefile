@@ -22,4 +22,9 @@ win_list:win_list.c
 sock_init:sock_init.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc sock_init.c -o sock_init 
-#	gcc sock_init.c -o sock_init-lws2_32 for mingwing  user , windows system
+#	gcc sock_init.c -o sock_init-lws2_32  
+
+time_server:time_server.c
+# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
+	gcc time_server.c -o time_server
+#	gcc time_server.c -o time_server.exe -lws2_32
