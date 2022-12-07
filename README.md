@@ -1,6 +1,6 @@
 # Socket programing  with c
 win_ : file for windows system</br>
-unix_: file for Linux system<</br>
+unix_: file for Linux system</br>
 ## Listing network adapters on Windows :
 list of code  :</br>
 win_init.c :Winsock initialization</br>
