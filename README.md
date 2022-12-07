@@ -8,4 +8,4 @@ win_List.c :list network adapters on Windows  </br>
 
 ## Listing network adapters on Linux and macOS:
 list of code  :</br>
-unix_List.c for more info :<a href="https://man7.org/linux/man-pages/man3/getnameinfo.3.html  " target="_blank" rel="noreferrer">  </br>
+unix_List.c for more info :<a href="https://man7.org/linux/man-pages/man3/getnameinfo.3.html  " target="getnameinfo" rel="noreferrer">  </br>
