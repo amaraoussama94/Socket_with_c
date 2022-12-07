@@ -1,8 +1,8 @@
 
 #################################  Linux  ###########################################################################
-#main app
-#Pong:Pong.o  
-#	g++ Pong.o -o Pong 
+#Listing network adapters 
+unix_list: unix_list.c  
+	gcc unix_list.c -o unix_list
 
 
 #Pong.o:Pong.cpp
@@ -14,7 +14,7 @@ clean:
 
 
 #################################  Windows  ###########################################################################
-
+#Listing network adapters 
 win_init:win_init.c
 	gcc win_init.c -o win_init.exe -lws2_32
 
