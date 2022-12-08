@@ -11,4 +11,4 @@ list of code  :</br>
 unix_List.c for more info : [getnameinfo_man](https://man7.org/linux/man-pages/man3/getnameinfo.3.html )</br>
 ## cross-platform:
 list of code  :</br>
-sock_init.c</br>
+sock_init.c</br> for test  run http://127.0.0.1:8080
