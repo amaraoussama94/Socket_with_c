@@ -57,6 +57,18 @@ int main()
         fprintf(stderr, "socket() failed. (%d)\n", GETSOCKETERRNO());
         return 1;
     }
+
+    /*make it Supporting both IPv4 and IPv6*/
+    /*#if !defined(IPV6_V6ONLY)
+    #define IPV6_V6ONLY 27
+    #endif
+    int option = 0;
+    if (setsockopt(socket_listen, IPPROTO_IPV6, IPV6_V6ONLY,
+    (void*)&option, sizeof(option))) 
+    {
+    fprintf(stderr, "setsockopt() failed. (%d)\n", GETSOCKETERRNO());
+    return 1;
+    }*/
     printf("Binding socket to local address...\n");
     if (bind(socket_listen,bind_address->ai_addr, bind_address->ai_addrlen)) 
     {
