@@ -20,7 +20,7 @@ unix_List.c : list network adapters on Linux.  for more info : [getnameinfo_man]
 To run this code, first install make. Then in shell got to repertory where the code exist(cd ...... Socket_with_c) </br>run:" make tcpserverfork"  </br>
 Then  ". /tcpserverfork"</br>
 list of code  :</br>
-*tcpserverfork.c: </br>
+*tcpserverfork.c: Using  fork we  create a child process to handle multiple client with no delay. This code is  microservers that make any string just all upper case simple and make you learn a lot. </br>
 ## cross-platform:
 list of code  :</br>
 *sock_init.c for test  run http://127.0.0.1:8080 </br>
