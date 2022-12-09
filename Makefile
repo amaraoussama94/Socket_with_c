@@ -2,8 +2,11 @@
 #################################  Linux  ###########################################################################
 #Listing network adapters 
 unix_list: unix_list.c  
-	gcc unix_list.c -o unix_list 
+	gcc unix_list.c -o unix_list tcpserverfork
 
+
+tcpserverfork:tcpserverfork.c
+	gcc tcpserverfork.c -o tcpserverfork
 
 clean:
 #cleanup all object file
