@@ -22,8 +22,10 @@ Then  ". /tcpserverfork"</br>
 list of code  :</br>
 *tcpserverfork.c: Using  fork we  create a child process to handle multiple client with no delay. This code is  microservers that make any string just all upper case simple and make you learn a lot. </br>
 ## cross-platform:
+PS : to run all this code please read the make file !</br>
 list of code  :</br>
-*sock_init.c for test  run http://127.0.0.1:8080 </br>
+*sock_init.c : Silmple code  to inti socket work for both windows and unix like system </br>
+*time_server.c:for test  run http://127.0.0.1:8080 </br>
 *tcpclient.c </br>
 <p align="center">
     <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/TCP%20client.png"  >  
