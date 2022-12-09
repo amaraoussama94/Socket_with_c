@@ -68,3 +68,37 @@ int main()
     /***If we've made it this far, then a TCP server is runing  vinnnnnnnnnnnnn pip yey*****/
 
     /*Lets have some child for this service */
+    /*fd_set structure that stores all of the active sockets*/
+    fd_set master;
+    //zero it
+    FD_ZERO(&master);
+    //add our only socket
+    FD_SET(socket_listen, &master); 
+    //holds the largest socket descriptor
+    SOCKET max_socket = socket_listen; 
+
+    printf("Waiting for connections...\n");
+    while(1) {
+    fd_set reads;
+    //If we didn't copy master, we would lose its data.
+    reads = master;
+    /*timeout value of 0 (NULL) to select() so that it doesn't return until a socket in
+    the master set is ready to be read from. At the beginning of our program, master only
+    contains socket_listen, but as our program runs, we add each new connection to
+    master.*/
+    if (select(max_socket+1, &reads, 0, 0, 0) < 0) 
+    {
+        fprintf(stderr, "select() failed. (%d)\n", GETSOCKETERRNO());
+        return 1;
+    }
+    //If a socket, X, was flagged by select() ready to be read , then FD_ISSET(X, &reads) is true
+    SOCKET i;
+    for(i = 1; i <= max_socket; ++i) 
+    {
+        if (FD_ISSET(i, &reads)) 
+        {
+
+        //We should first determine whether the current socket 
+        //is the listening one or not. If it is, we call accept()
+        }
+    }
