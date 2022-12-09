@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
     printf("Configuring remote address...\n");
     struct addrinfo hints;
-    // clearing the struct instance  alll zero
+    // clearing the struct instance  all zero
     memset(&hints, 0, sizeof(hints));
     //TCP  else use SOCK_DGRAM for UDP
     hints.ai_socktype = SOCK_STREAM;
