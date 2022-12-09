@@ -1,6 +1,7 @@
 /************************************************/
 /** arg 1 @IP      arg 2 Port number          **/
 /**    we can use IP4 or IP 6                 **/
+/**        Port number is 8080                **/
 /***********************************************/
 #include "macrosheaderwx.h"
 
