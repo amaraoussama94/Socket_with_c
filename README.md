@@ -25,12 +25,13 @@ list of code  :</br>
 PS : to run all this code please read the make file !</br>
 list of code  :</br>
 *sock_init.c : Silmple code  to inti socket work for both windows and unix like system </br>
-*time_server.c:  This is a simple time  server that sends the time date to simple HTTPS  web page .Here you will learn how to make  a cross platform code and how to make it accept IP6 and IP4 at the same time. For a test  run http://127.0.0.1:8080, simply 127.0.0.1 is the local host address and 8080 is the port</br> 
-*tcpclient.c </br>
+*time_server.c:  This is a simple time  server that sends the time date to simple HTTPS  web page .Here you will learn how to make  a cross platform code and how to make it accept IP6 and IP4 at the same time.</br> 
+For a test  run http://127.0.0.1:8080, simply 127.0.0.1 is the local host address and 8080 is the port</br> 
+*tcpclient.c : Follow instructions in the code first line if you want to test it. Using some mystery technique this code can create some chile that can send a simple string to the server and wait for his response  </br>
 <p align="center">
     <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/TCP%20client.png"  >  
 </p>
-*tcpserver.c</br>
+*tcpserver.c: </br>
 <p align="center">
     <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/TCp%20Server.png"  >  
 </p>
