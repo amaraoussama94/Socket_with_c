@@ -8,7 +8,7 @@
 #endif
 #include "macrosheaderwx.h"
 #include <ctype.h>
-
+#include <stdlib.h>
 int main() 
 {
 
@@ -100,7 +100,7 @@ int main()
                 if (bytes_received < 1) 
                 {
                     CLOSESOCKET(socket_client);
-                    exit(0);
+                    exit(1);
                 }
 
                 int j;
