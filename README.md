@@ -16,7 +16,13 @@ list of code  :</br>
 list of code  :</br>
 *sock_init.c for test  run http://127.0.0.1:8080 </br>
 *tcpclient.c </br>
+<p align="center">
+    <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/TCP%20client.png"  >  
+</p>
 *tcpserver.c</br>
+<p align="center">
+    <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/TCp%20Server.png"  >  
+</p>
 *tcpserverchat.c</br>
 ## PS
 for windows user please read the make file </br>
