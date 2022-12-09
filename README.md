@@ -13,3 +13,5 @@ unix_List.c for more info : [getnameinfo_man](https://man7.org/linux/man-pages/m
 list of code  :</br>
 *sock_init.c for test  run http://127.0.0.1:8080 </br>
 *tcpclient.c </br>
+## PS
+for windows user please read the make file </br>
