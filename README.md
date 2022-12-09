@@ -29,11 +29,11 @@ list of code  :</br>
 For a test  run http://127.0.0.1:8080, simply 127.0.0.1 is the local host address and 8080 is the port</br> 
 *tcpclient.c : Follow instructions in the code first line if you want to test it. Using some mystery technique this code can create some chile that can send a simple string to the server and wait for his response  </br>
 <p align="center">
-    <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/TCP%20client.png"width="290" height="240"/  >  
+    <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/TCP%20client.png"width="290" height="500"/  >  
 </p>
 *tcpserver.c: </br>
 <p align="center">
-    <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/TCp%20Server.png" width="290" height="240"/ >  
+    <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/TCp%20Server.png" width="290" height="500"/ >  
 </p>
 *tcpserverchat.c</br>
 ## PS
