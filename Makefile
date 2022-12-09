@@ -7,7 +7,8 @@ unix_list: unix_list.c
 
 clean:
 #cleanup all object file
-	  -rm *.o $(objects) 
+#	  -rm *.o $(objects) 
+	  -rm sock_init tcpclient tcpserver time_server unix_list
 
 
 #################################  Windows  ###########################################################################
