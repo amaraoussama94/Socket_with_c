@@ -136,6 +136,9 @@ int main()
                     }
 
                     SOCKET j;
+                    /*This works by looping through all the sockets in the master set. For each socket, j, we
+                    check that it's not the listening socket and we check that it's not the same socket that sent
+                    the data in the first place. If it's not, we call send() to echo the received data to it.*/
                     for (j = 1; j <= max_socket; ++j) 
                     {
                         if (FD_ISSET(j, &master)) 
