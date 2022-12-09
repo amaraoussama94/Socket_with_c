@@ -2,13 +2,13 @@
 #################################  Linux  ###########################################################################
 #Listing network adapters 
 unix_list: unix_list.c  
-	gcc unix_list.c -o unix_list
+	gcc unix_list.c -o unix_list 
 
 
 clean:
 #cleanup all object file
 #	  -rm *.o $(objects) 
-	  -rm sock_init tcpclient tcpserver time_server unix_list
+	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat
 
 
 #################################  Windows  ###########################################################################
@@ -40,3 +40,8 @@ tcpserver:tcpserver.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc tcpserver.c -o tcpserver
 #	gcc tcpserver.c -o tcpserver.exe -lws2_32
+
+tcpserverchat:tcpserverchat.c
+# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
+	gcc tcpserverchat.c -o tcpserverchat
+#	gcc tcpserverchat.c -o tcpserverchat.exe -lws2_32
