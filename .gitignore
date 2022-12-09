@@ -1,9 +1,12 @@
 #file to ignoee by git
 *.o
 .vscode
-
+#app of linux to ignore 
 unix_list
 sock_init
 time_server
 tcpclient
 tcpserver
+tcpserverchat
+
+#app of windows to ignore 
