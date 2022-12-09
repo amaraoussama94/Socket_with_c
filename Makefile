@@ -34,3 +34,8 @@ tcpclient:tcpclient.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc tcpclient.c -o tcpclient
 #	gcc tcpclient.c -o tcpclient.exe -lws2_32
+
+tcpserver:tcpserver.c
+# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
+	gcc tcpserver.c -o tcpserver
+#	gcc tcpserver.c -o tcpserver.exe -lws2_32
