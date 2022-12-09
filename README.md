@@ -35,6 +35,6 @@ For a test  run http://127.0.0.1:8080, simply 127.0.0.1 is the local host addres
 <p align="center">
     <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/TCp%20Server.png" width="350" height="600"/ >  
 </p>
-*tcpserverchat.c</br>
+*tcpserverchat.c:Simple server that just translates a string sending by client to  all uppercase  string. This serves serve any number of  client  simultaneously with no blocking or  delay ,each client will all string that he send to server all uper and the other string send by the other client  .</br>Port fixed to 8080 , accept both ip4 and ip6</br>
 ## Please attention 
 for windows user please read the make file </br>
