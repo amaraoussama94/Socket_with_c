@@ -1,5 +1,6 @@
 /************************************************/
-/** arg 1 @IP      arg 2 Port number           **/
+/** arg 1 @IP      arg 2 Port number          **/
+/**    we can use IP4 or IP 6                 **/
 /***********************************************/
 #include "macrosheaderwx.h"
 
@@ -49,3 +50,22 @@ int main(int argc, char *argv[])
     char service_buffer[100];
     getnameinfo(peer_address->ai_addr, peer_address->ai_addrlen,address_buffer, sizeof(address_buffer),service_buffer, sizeof(service_buffer),NI_NUMERICHOST);
     printf("%s %s\n", address_buffer, service_buffer);
+    printf("Creating socket...\n");
+    SOCKET socket_peer;
+    socket_peer = socket(peer_address->ai_family,peer_address->ai_socktype, peer_address->ai_protocol);
+    if (!ISVALIDSOCKET(socket_peer)) 
+    {
+        fprintf(stderr, "socket() failed. (%d)\n", GETSOCKETERRNO());
+        return 1;
+    }
+    printf("Connecting...\n");
+    /*connect() associates a socket with a remote address and initiates the TCP connection.*/
+    if (connect(socket_peer,peer_address->ai_addr, peer_address->ai_addrlen)) 
+    {
+        fprintf(stderr, "connect() failed. (%d)\n", GETSOCKETERRNO());
+        return 1;
+    }
+    freeaddrinfo(peer_address);//free the memory for peer_address
+    printf("Connected.\n");
+    /***If we've made it this far, then a TCP connection has been established to the remote server vinnnnnnnnnnnnn yey*****/
+    printf("To send data, enter text followed by enter.\n");
