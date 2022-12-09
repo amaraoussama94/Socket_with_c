@@ -76,6 +76,7 @@ int main(int argc, char *argv[])
     If we did, it would block until data comes from the socket*/
     /*Lets have some child for this service */
     while(1) {
+        /*fd_set structure that stores all of the active sockets*/
     fd_set reads;//store our socket set
     FD_ZERO(&reads);//zero it
     FD_SET(socket_peer, &reads);//add our only socket
