@@ -36,5 +36,5 @@ For a test  run http://127.0.0.1:8080, simply 127.0.0.1 is the local host addres
     <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/TCp%20Server.png" width="290" height="500"/ >  
 </p>
 *tcpserverchat.c</br>
-## PS
+## Please attention 
 for windows user please read the make file </br>
