@@ -1,7 +1,9 @@
 #file to ignoee by git
 *.o
 .vscode
+
 unix_list
 sock_init
 time_server
 tcpclient
+tcpserver
