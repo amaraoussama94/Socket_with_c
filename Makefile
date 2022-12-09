@@ -28,3 +28,9 @@ time_server:time_server.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc time_server.c -o time_server
 #	gcc time_server.c -o time_server.exe -lws2_32
+
+
+tcpclient:tcpclient.c
+# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
+	gcc tcpclient.c -o tcpclient
+#	gcc tcpclient.c -o tcpclient.exe -lws2_32
