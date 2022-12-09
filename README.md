@@ -1,6 +1,9 @@
 # Socket programing  with c
+This  is  a collection of  server  client code. Here we use  socket with some best  practise. If you want to use the  code please install make first read the make file and then enjoy .</br>
+ Here some tips to understand our code:</br>
 win_ : file for windows system</br>
 unix_: file for Linux system</br>
+Else it is a cross platform code</br>
 ## Listing network adapters on Windows :
 list of code  :</br>
 win_init.c :Winsock initialization</br>
