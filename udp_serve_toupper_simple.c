@@ -5,7 +5,6 @@
 /*****************************************************/
 #include "macrosheaderwx.h"
 
-#include "chap04.h"
 #include <ctype.h>
 
 int main() 
