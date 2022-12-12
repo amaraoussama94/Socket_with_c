@@ -2,7 +2,7 @@
 #################################  Linux  ###########################################################################
 #Listing network adapters 
 unix_list: unix_list.c  
-	gcc unix_list.c -o unix_list tcpserverfork
+	gcc unix_list.c -o unix_list tcpserverfork udp_recvfrom
 
 
 tcpserverfork:tcpserverfork.c
