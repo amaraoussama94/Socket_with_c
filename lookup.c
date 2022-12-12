@@ -30,13 +30,33 @@ int main(int argc, char *argv[])
             return 1;
         }
     #endif
+    //prints the hostname or address that is passed in as the first command-line argument
     printf("Resolving hostname '%s'\n", argv[1]);
     struct addrinfo hints;
     memset(&hints, 0, sizeof(hints));
+    //want all available addresses of any type, including both IPv4 and IPv6 addresses
     hints.ai_flags = AI_ALL;
     struct addrinfo *peer_address;
+    //0 in for the service argument because we don't care about the port number
     if (getaddrinfo(argv[1], 0, &hints, &peer_address)) 
     {
         fprintf(stderr, "getaddrinfo() failed. (%d)\n", GETSOCKETERRNO());
         return 1;
     }
+    //Now that peer_address holds the desired address(es), we can use getnameinfo() to
+    //convert them to text. The following code does that:
+    printf("Remote address is:\n");
+    
+    struct addrinfo *address = peer_address;
+    do 
+    {
+        char address_buffer[100];
+        getnameinfo(address->ai_addr, address->ai_addrlen,address_buffer, sizeof(address_buffer),0, 0,NI_NUMERICHOST);
+        printf("\t%s\n", address_buffer);
+    } while ((address = address->ai_next));
+    freeaddrinfo(peer_address);
+    #if defined(_WIN32)
+        WSACleanup();
+    #endif
+    return 0;
+}
