@@ -14,4 +14,15 @@ udp_recvfrom
 udp_serve_toupper
 udp_client_toupper
 udp_serve_toupper_simple
+lookup
+
 #app of windows to ignore 
+tcpclient.exe
+tcpserver.exe
+tcpserverchat.exe
+udpclient .exe
+udp_recvfrom.exe
+udp_serve_toupper.exe
+udp_client_toupper.exe
+udp_serve_toupper_simple.exe
+lookup.exe
