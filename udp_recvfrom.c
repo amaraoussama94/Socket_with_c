@@ -1,5 +1,7 @@
 
-
+/*************************************/
+/**     UDP server                  **/
+/*************************************/
 
 #include "macrosheaderwx.h"
 
@@ -22,7 +24,7 @@ int main()
     //IP4 here so for IP6 change AF_INET to AF_INET6
     hints.ai_family = AF_INET;
     //UDP  else use SOCK_DGRAM for TCP
-    hints.ai_socktype = SOCK_STREAM
+    hints.ai_socktype = SOCK_STREAM;
     // This is telling getaddrinfo() that we want it to bind to the wildcard address;
     hints.ai_flags = AI_PASSIVE;
     struct addrinfo *bind_address;
