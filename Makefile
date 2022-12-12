@@ -49,10 +49,10 @@ tcpserverchat:tcpserverchat.c
 	gcc tcpserverchat.c -o tcpserverchat
 #	gcc tcpserverchat.c -o tcpserverchat.exe -lws2_32
 
-udpclient :udpclient .c
+udpclient :udpclient.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
-	gcc udpclient .c -o udpclient 
-#	gcc udpclient .c -o udpclient .exe -lws2_32
+	gcc udpclient.c -o udpclient 
+#	gcc udpclient.c -o udpclient .exe -lws2_32
 
 udp_recvfrom:udp_recvfrom.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
