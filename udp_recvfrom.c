@@ -30,7 +30,7 @@ int main()
     struct addrinfo *bind_address;
      //get our local address
     // 0: generates an address that's suitable for bind  
-    getaddrinfo(0, "8080", &hints, &bind_address);
+    getaddrinfo(0, "9000", &hints, &bind_address);
     //create the socket
     printf("Creating socket...\n");
     SOCKET socket_listen;
