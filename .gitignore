@@ -12,4 +12,5 @@ tcpserverfork
 udpclient 
 udp_recvfrom
 udp_serve_toupper
+udp_client_toupper
 #app of windows to ignore 
