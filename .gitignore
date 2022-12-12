@@ -13,4 +13,5 @@ udpclient
 udp_recvfrom
 udp_serve_toupper
 udp_client_toupper
+udp_serve_toupper_simple
 #app of windows to ignore 
