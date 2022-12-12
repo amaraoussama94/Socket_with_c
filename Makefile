@@ -2,7 +2,7 @@
 #################################  Linux  ###########################################################################
 #Listing network adapters 
 unix_list: unix_list.c  
-	gcc unix_list.c -o unix_list tcpserverfork udp_recvfrom
+	gcc unix_list.c -o unix_list 
 
 
 tcpserverfork:tcpserverfork.c
@@ -11,7 +11,7 @@ tcpserverfork:tcpserverfork.c
 clean:
 #cleanup all object file
 #	  -rm *.o $(objects) 
-	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat
+	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat  tcpserverfork  udp_recvfrom
 
 
 #################################  Windows  ###########################################################################
