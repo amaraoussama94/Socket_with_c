@@ -80,19 +80,21 @@ int main()
             struct sockaddr_storage client_address;
             socklen_t client_len = sizeof(client_address);
             char read[1024];
-            int bytes_received = recvfrom(socket_listen, read, 1024, 0,
-            (struct sockaddr *)&client_address, &client_len);
+            int bytes_received = recvfrom(socket_listen, read, 1024, 0,(struct sockaddr *)&client_address, &client_len);
             if (bytes_received < 1) 
             {
                 fprintf(stderr, "connection closed. (%d)\n",
                 GETSOCKETERRNO());
                 return 1;
             }
+            // get the information of the client 
+            char address_buffer[100];
+            getnameinfo((struct sockaddr*)&client_address,client_len,address_buffer, sizeof(address_buffer), 0, 0,NI_NUMERICHOST | NI_NUMERICSERV);
+            printf("New connection from %s\n", address_buffer);        
             int j;
             for (j = 0; j < bytes_received; ++j)
-            read[j] = toupper(read[j]);
-            sendto(socket_listen, read, bytes_received, 0,
-            (struct sockaddr*)&client_address, client_len);
+                read[j] = toupper(read[j]);
+            sendto(socket_listen, read, bytes_received, 0, (struct sockaddr*)&client_address, client_len);
         } //if FD_ISSET
     } //while(1)
     printf("Closing listening socket...\n");
