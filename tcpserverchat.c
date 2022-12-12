@@ -51,6 +51,7 @@ int main()
     fprintf(stderr, "setsockopt() failed. (%d)\n", GETSOCKETERRNO());
     return 1;
     }*/
+    /*bind the new socket to the local address*/
     printf("Binding socket to local address...\n");
     if (bind(socket_listen,bind_address->ai_addr, bind_address->ai_addrlen)) 
     {
