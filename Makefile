@@ -11,7 +11,7 @@ tcpserverfork:tcpserverfork.c
 clean:
 #cleanup all object file
 #	  -rm *.o $(objects) 
-	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat  tcpserverfork  udpclient  udp_recvfrom
+	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat  tcpserverfork  udpclient  udp_recvfrom udp_serve_toupper
 
 
 #################################  Windows  ###########################################################################
@@ -58,3 +58,8 @@ udp_recvfrom:udp_recvfrom.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc udp_recvfrom.c -o udp_recvfrom
 #	gcc udp_recvfrom.c -o udp_recvfrom.exe -lws2_32
+
+udp_serve_toupper:udp_serve_toupper.c
+# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
+	gcc udp_serve_toupper.c -o udp_serve_toupper
+#	gcc udp_serve_toupper.c -o udp_serve_toupper.exe -lws2_32
