@@ -48,3 +48,8 @@ tcpserverchat:tcpserverchat.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc tcpserverchat.c -o tcpserverchat
 #	gcc tcpserverchat.c -o tcpserverchat.exe -lws2_32
+
+udp_recvfrom:udp_recvfrom.c
+# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
+	gcc udp_recvfrom.c -o udp_recvfrom
+#	gcc udp_recvfrom.c -o udp_recvfrom.exe -lws2_32
