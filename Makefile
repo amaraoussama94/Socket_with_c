@@ -68,3 +68,8 @@ udp_client_toupper:udp_client_toupper.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc udp_client_toupper.c -o udp_client_toupper
 #	gcc udp_client_toupper.c -o udp_client_toupper.exe -lws2_32
+
+udp_serve_toupper_simple:udp_serve_toupper_simple.c
+# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
+	gcc udp_serve_toupper_simple.c -o udp_serve_toupper_simple
+#	gcc udp_serve_toupper_simple.c -o udp_serve_toupper_simple.exe -lws2_32
