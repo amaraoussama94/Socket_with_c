@@ -73,3 +73,8 @@ udp_serve_toupper_simple:udp_serve_toupper_simple.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc udp_serve_toupper_simple.c -o udp_serve_toupper_simple
 #	gcc udp_serve_toupper_simple.c -o udp_serve_toupper_simple.exe -lws2_32
+
+lookup:lookup.c
+# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
+	gcc lookup.c -o lookup
+#	gcc lookup.c -o lookup.exe -lws2_32
