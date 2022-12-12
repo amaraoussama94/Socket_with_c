@@ -9,4 +9,5 @@ tcpclient
 tcpserver
 tcpserverchat
 tcpserverfork
+udp_recvfrom
 #app of windows to ignore 
