@@ -42,11 +42,15 @@ Simple server that just translates a string sending by client to  all uppercase 
 Simple server that just translates a string sending by client to  all uppercase  string. This serves serve any number of  client  simultaneously with no blocking or  delay ,each client will all string that he send to server all uper and the other string send by the other client  .</br>Port fixed to 8080 , accept both ip4 and ip6</br>
 
 ### udp_recvfrom.c :
+Simple UDP server.It will accept any incoming msg  from UDP client.</br>
+<p align="center"> <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/udpserver.png" width="350" height="600" >  </p>
 
 ### udp_serve_toupper.c :
+Its  same like TCP. We just  use  UDP instead of TCP. we  also use  fork style  to handle multiclient request </br>
+<p align="center"> <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/udpserverupper.png" width="350" height="600" >  </p>
 
 ###  udp_serve_toupper_simple.c :
-
+Same like the other  server using  simpel methode  . </br>
 ### udpclient.c :
 
 ## Please attention  :
