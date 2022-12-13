@@ -5,7 +5,7 @@
 /**using getnameinfo() for the text conversion. If multiple addresses*/ 
 /**are associated with a name, it prints each of them.              **/
 /*********************************************************************/
-
+ // Exemple pass example.com as  argument 
 #include "macrosheaderwx.h"
 
 #ifndef AI_ALL
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     //0 in for the service argument because we don't care about the port number
     if (getaddrinfo(argv[1], 0, &hints, &peer_address)) 
     {
-        fprintf(stderr, "getaddrinfo() failed. (%d)\n", GETSOCKETERRNO());
+        fprintf(stexample.comderr, "getaddrinfo() failed. (%d)\n", GETSOCKETERRNO());
         return 1;
     }
     //Now that peer_address holds the desired address(es), we can use getnameinfo() to
