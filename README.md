@@ -50,8 +50,9 @@ Its  same like TCP. We just  use  UDP instead of TCP. we  also use  fork style  
 <p align="center"> <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/udpserverupper.png" width="350" height="600" >  </p>
 
 ###  udp_serve_toupper_simple.c :
-Same like the other  server using  simpel methode  . </br>
+Same like the other  server using  simple methode  . </br>
 ### udpclient.c :
+<p align="center"> <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/Udpclient.png" width="350" height="600" >  </p>
 
 ## Please attention  :
 for windows user please read the make file </br>
