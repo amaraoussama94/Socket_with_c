@@ -46,17 +46,18 @@ Simple UDP server.It will accept any incoming msg  from UDP client.</br>
 <p align="center"> <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/udpserver.png" width="350" height="600" >  </p>
 
 ### udpclient.c :
-Simple UPD client handle 2 cmd argument  @IP and port number .Then you start sending msg .PS there's no test if the msg reach the server or no here .</br>
+The simple UPD client handles 2 cm argument  @IP and port number. Then you start sending msg .PS there's no test if the msg reaches the server or no in this code .</br>
 <p align="center"> <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/Udpclient.png" width="350" height="600" >  </p>
 
 ### udp_serve_toupper.c :
-Its  same like TCP. We just  use  UDP instead of TCP. we  also use  fork style  to handle multiclient request </br>
+Its  same like TCP. We just  use  UDP instead of TCP. We  also use  fork style  to handle multiclient request </br>
 <p align="center"> <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/udpserverupper.png" width="350" height="600" >  </p>
 
 ###  udp_serve_toupper_simple.c :
-Same like the other  server using  simple methode  . </br>
+Same like the other  server using simple methods  . </br>
 
-###udp_client_toupper.c :
+### udp_client_toupper.c :
+UDP client, accept 2 argument from cmd @IP and Port number  of the server to connect  with, then we  make any  child  process to make  several  clients  and send some  msg to the server we then get them from serve and print  them </br>
 
 ## Please attention  :
 for windows user please read the make file </br>
