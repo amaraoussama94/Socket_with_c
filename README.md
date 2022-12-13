@@ -58,6 +58,8 @@ Same like the other  server using simple methods  . </br>
 
 ### udp_client_toupper.c :
 UDP client, accept 2 argument from cmd @IP and Port number  of the server to connect  with, then we  make any  child  process to make  several  clients  and send some  msg to the server we then get them from serve and print  them </br>
+### udp_client_toupper.c :
+This code takes a name or IP address for its only argument.It then uses getaddrinfo() to resolve that name or that IP address into an address structure, and the program prints that IP address** using getnameinfo() for the text conversion. If multiple addresses are associated with a name, it prints each of them. </br>    
 
 ## Please attention  :
 for windows user please read the make file </br>
