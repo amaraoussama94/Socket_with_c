@@ -65,5 +65,8 @@ This code takes a name or IP address for its only argument.It then uses getaddri
 for linux  user  :./lookup   domain (example.com  ,google.com .... as example )</br>  
 windows user via powershell  : lookup.exe   domain (example.com  ,google.com .... as example )</br> 
 
+### dns_query.c :
+We will now implement a utility to send DNS queries to a DNS server and receive the DNS response. This should not normally be needed in the field. It is, however, a good opportunity to better understand the DNS protocol and to get experience of sending binary UDP packets.</br>  
+
 ## Please attention  :
 for windows user please read the make file </br>
