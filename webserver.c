@@ -162,3 +162,71 @@ void drop_client(struct client_info *client)
  * get_client_address():returns a client's IP address as a string 
  * (character array)
 ****************************************************************/
+
+const char *get_client_address(struct client_info *ci) 
+{
+    //static, which ensures that its memory is available after the function returns
+    static char address_buffer[100];
+    //convert the binary IP address into a text address;
+    getnameinfo((struct sockaddr*)&ci->address,ci->address_length,address_buffer, sizeof(address_buffer), 0, 0,NI_NUMERICHOST);
+    return address_buffer;
+}
+
+/**********************************************************
+ * wait_on_clients() :uses the select() function to wait 
+ * until either a client has data available or a new
+ *  client is attempting to connect.
+ *********************************************************/
+fd_set wait_on_clients(SOCKET server) 
+{
+    fd_set reads;
+    FD_ZERO(&reads);
+    FD_SET(server, &reads);
+    SOCKET max_socket = server;
+    struct client_info *ci = clients;
+    //loops through the linked list of connected clients and adds the socket for each one in turn
+    while(ci) 
+    {
+        FD_SET(ci->socket, &reads);
+        if (ci->socket > max_socket)
+        max_socket = ci->socket;
+        ci = ci->next;
+    }
+    //check  when one or more of the sockets in reads is ready
+    if (select(max_socket+1, &reads, 0, 0, 0) < 0) 
+    {
+        fprintf(stderr, "select() failed. (%d)\n", GETSOCKETERRNO());
+        exit(1);
+    }
+    return reads;
+}
+
+
+/**************************************************
+ * send_400() and send_404() :are used to handle
+ *  HTTP error conditions.
+**************************************************/
+void send_400(struct client_info *client) 
+{
+    const char *c400 = "HTTP/1.1 400 Bad Request\r\n"
+    "Connection: close\r\n"
+    "Content-Length: 11\r\n\r\nBad Request";
+
+    send(client->socket, c400, strlen(c400), 0);
+    //client is dropped
+    drop_client(client);
+}
+void send_404(struct client_info *client) 
+{
+    const char *c404 = "HTTP/1.1 404 Not Found\r\n"
+    "Connection: close\r\n"
+    "Content-Length: 9\r\n\r\nNot Found";
+
+    send(client->socket, c404, strlen(c404), 0);
+    drop_client(client);
+}
+
+/*************************************************
+ * serve_resource(): attempts to transfer a file
+ *  to a connected client.
+*************************************************/
