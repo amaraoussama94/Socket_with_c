@@ -248,10 +248,10 @@ void serve_resource(struct client_info **client_list,struct client_info *client,
         send_404(client_list, client);
         return;
     }
-
+     //convert the path to refer to files in the public directory
     char full_path[128];
     sprintf(full_path, "public%s", path);
-
+     //While Unix-based systems use a slash (/), Windows instead uses a backslash (\) as its standard
 #if defined(_WIN32)
     char *p = full_path;
     while (*p) 
@@ -260,7 +260,7 @@ void serve_resource(struct client_info **client_list,struct client_info *client,
         ++p;
     }
 #endif
-
+    //check whether the requested resource actually exists
     FILE *fp = fopen(full_path, "rb");
 
     if (!fp) 
@@ -268,16 +268,17 @@ void serve_resource(struct client_info **client_list,struct client_info *client,
         send_404(client_list, client);
         return;
     }
-
+    //use fseek() and ftell() to determine the requested file's size
     fseek(fp, 0L, SEEK_END);
     size_t cl = ftell(fp);
     rewind(fp);
-
+    //get the file's type
     const char *ct = get_content_type(full_path);
+    //reserve a temporary buffer to store header fields in
 
 #define BSIZE 1024
     char buffer[BSIZE];
-
+    //server prints relevant headers into it and then sends those headers to the client.
     sprintf(buffer, "HTTP/1.1 200 OK\r\n");
     send(client->socket, buffer, strlen(buffer), 0);
 
@@ -292,8 +293,9 @@ void serve_resource(struct client_info **client_list,struct client_info *client,
 
     sprintf(buffer, "\r\n");
     send(client->socket, buffer, strlen(buffer), 0);
-
+    //send the actual file content
     int r = fread(buffer, 1, BSIZE, fp);
+    //looped until fread() returns 0; this indicates that the entire file has been read
     while (r) 
     {
         send(client->socket, buffer, r, 0);
