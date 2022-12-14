@@ -10,8 +10,8 @@ tcpserverfork:tcpserverfork.c
 
 clean:
 #cleanup all object file
-	  -rm *.o $(objects) 
-	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat  tcpserverfork  udpclient  udp_recvfrom udp_serve_toupper udp_client_toupper webclient
+#	  -rm *.o $(objects) 
+	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat  tcpserverfork  udpclient  udp_recvfrom udp_serve_toupper udp_client_toupper webclientget
 
 
 #################################  Windows  ###########################################################################
@@ -76,7 +76,7 @@ udp_serve_toupper_simple:udp_serve_toupper_simple.c
 
 lookup:lookup.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
-	gcc lookup.c -o lookup
+	gcc lookup.c -o lookupwebclientget
 #	gcc lookup.c -o lookup.exe -lws2_32
 
 dns_query:dns_query.c
@@ -85,8 +85,8 @@ dns_query:dns_query.c
 #	gcc dns_query.c -o dns_query.exe -lws2_32
  
 
-webclient:Parsing_URL.c webclient.c
+webclient:Parsing_URL.c webclientget.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
-	gcc Parsing_URL.c webclient.c   -o webclient
-#	gcc Parsing_URL.c webclient.c -o webclient.exe -lws2_32
+	gcc Parsing_URL.c webclientget.c   -o webclientget
+#	gcc Parsing_URL.c webclientgets.c -o webclientget.exe -lws2_32
 
