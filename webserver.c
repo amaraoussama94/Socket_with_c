@@ -97,3 +97,42 @@ struct client_info
 
 //To simplify our code, we store the root of our linked list in a global variable, clients
 static struct client_info *clients = 0;
+/****************************************************************************
+ * get_client() :takes a SOCKET variable and searches our linked list for the
+corresponding client_info data structure if it s exit ok else it create it 
+*****************************************************************************/
+struct client_info *get_client(SOCKET s) 
+{
+    struct client_info *ci = clients;
+    while(ci) 
+    {
+        //If ci->socket is the socket we are searching for, then the loop breaks
+        if (ci->socket == s)
+        {
+            break;
+        }
+        ci = ci->next;
+    }
+    if (ci) 
+    {
+        return ci;
+    }
+    //given socket isn't found, then the code continues on and must create a new client_info structure
+
+    //allocate memory for a new client_info structure
+    struct client_info *n = (struct client_info*) calloc(1, sizeof(struct client_info));
+    //checks that the memory allocation succeeded,
+    if (!n) 
+    {
+        fprintf(stderr, "Out of memory.\n");
+        exit(1);
+    }
+    n->address_length = sizeof(n->address);
+    n->next = clients;
+    clients = n;
+    return n;
+}
+
+/************************************************
+ * drop_client():
+****************************************************/
