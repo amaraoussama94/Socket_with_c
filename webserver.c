@@ -10,6 +10,7 @@
 //determine a file's media type
 const char *get_content_type(const char* path) 
 {
+    //find the last dot (.) in the filename 
     const char *last_dot = strrchr(path, '.');
     if (last_dot) 
     {
@@ -30,4 +31,48 @@ const char *get_content_type(const char* path)
         if (strcmp(last_dot, ".txt") == 0) return "text/plain";
     }
     return "application/octet-stream";
+}
+/**********************************
+ * Creating the server socket
+**********************************/
+//PS : see other project for more comment 
+SOCKET create_socket(const char* host, const char *port) 
+{
+    printf("Configuring local address...\n");
+    struct addrinfo hints;
+    //make it all 0
+    memset(&hints, 0, sizeof(hints));
+    //IP V4
+    hints.ai_family = AF_INET;
+      //TCP
+    hints.ai_socktype = SOCK_STREAM;
+    hints.ai_flags = AI_PASSIVE;
+    struct addrinfo *bind_address;
+
+    getaddrinfo(host, port, &hints, &bind_address);
+
+    printf("Creating socket...\n");
+    SOCKET socket_listen;
+    socket_listen = socket(bind_address->ai_family,bind_address->ai_socktype, bind_address->ai_protocol);
+    if (!ISVALIDSOCKET(socket_listen)) 
+    {
+        fprintf(stderr, "socket() failed. (%d)\n", GETSOCKETERRNO());
+        exit(1);
+    }
+
+    printf("Binding socket to local address...\n");
+    if (bind(socket_listen,bind_address->ai_addr, bind_address->ai_addrlen)) 
+    {
+        fprintf(stderr, "bind() failed. (%d)\n", GETSOCKETERRNO());
+        exit(1);
+    }
+    freeaddrinfo(bind_address);
+
+    printf("Listening...\n");
+    if (listen(socket_listen, 10) < 0) 
+    {
+        fprintf(stderr, "listen() failed. (%d)\n", GETSOCKETERRNO());
+        exit(1);
+    }
+    return socket_listen;
 }
