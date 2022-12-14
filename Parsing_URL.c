@@ -44,4 +44,35 @@ void parse_url(char *url, char **hostname, char **port, char** path)
         }
     }
     //code must then scan for the end of the hostname by looking for the first colon, slash, or hash
+    *hostname = p;
+    while (*p && *p != ':' && *p != '/' && *p != '#') 
+    { 
+        ++p;
+    }
+    //check whether a port number was found
+    //If a port number is found, our code returns it in the port variable; otherwise, a default port number of 80 is returned
+    *port = "80";
+    if (*p == ':') 
+    {
+        *p++ = 0;
+        *port = p;
+    }
+
+    while (*p && *p != '/' && *p != '#') 
+    {
+        ++p;
+    }
+    //All document paths start with /,
+    *path = p;
+    if (*p == '/') 
+    {
+        *path = p + 1;
+    }
+    *p = 0;
+    //The code then attempts to find a hash, if it exists. If it does exist, it is overwritten with a
+    //terminating null character.
+    printf("hostname: %s\n", *hostname);
+    printf("port: %s\n", *port);
+    printf("path: %s\n", *path);
+
 }
