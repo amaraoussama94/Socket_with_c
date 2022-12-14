@@ -62,7 +62,7 @@ void parse_url(char *url, char **hostname, char **port, char** path)
     {
         ++p;
     }
-    //All document paths start with /,
+      //All document paths start with /,
     *path = p;
     if (*p == '/') 
     {
@@ -76,3 +76,4 @@ void parse_url(char *url, char **hostname, char **port, char** path)
     printf("path: %s\n", *path);
 
 }
+  
