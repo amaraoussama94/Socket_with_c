@@ -15,6 +15,7 @@ udp_serve_toupper
 udp_client_toupper
 udp_serve_toupper_simple
 lookup
+dns_query
 
 #app of windows to ignore 
 tcpclient.exe
@@ -26,3 +27,4 @@ udp_serve_toupper.exe
 udp_client_toupper.exe
 udp_serve_toupper_simple.exe
 lookup.exe
+dns_query.exe
