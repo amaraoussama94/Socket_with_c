@@ -75,10 +75,10 @@ windows user via powershell : dns_query.exe example.com a   (exemple)</br>
 ### Parsing_URL.c , parsing_url.h :
 This is simple lib with one function . The function takes as input a URL, and it returns as output the hostname, the port number, and the document path .</br> 
 
-### webclient.c :
+### webclientget.c :
 client takes as input a URL. It thenattempts to connect to the host and retrieve the resource given by the URL. The program displays the HTTP headers that are sent and received, and it attempts to parse out the requested resource content from the HTTP response.</br> 
 
-for lunix user ,how to use : ./web_get http://example.com/  (exemple)</br> 
-windows user via powershell : web_get.exe http://example.com/    (exemple)</br> 
+for lunix user ,how to use : ./ webclientget http://example.com/  (exemple)</br> 
+windows user via powershell :  webclientget.exe http://example.com/    (exemple)</br> 
 ## Please attention  :
 for windows user please read the make file </br>
