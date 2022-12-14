@@ -387,6 +387,11 @@ int main(int argc, char *argv[])
     #endif
     return 0;
 }
+/**************************************************************************************************
+ * PS! :Note that UDP is not always reliable. If our DNS query is lost in transit, then dns_query
+ * hangs while waiting forever for a reply that never comes. This could be fixed by using the
+ * select() function to time out and retry.
+ ***************************************************************************************************/
 
 
 
