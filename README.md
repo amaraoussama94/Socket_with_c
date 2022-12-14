@@ -62,6 +62,8 @@ UDP client, accept 2 argument from cmd @IP and Port number  of the server to con
 ### lookup.c :
 This code takes a name or IP address for its only argument.It then uses getaddrinfo() to resolve that name or that IP address into an address structure, and the program prints that IP address** using getnameinfo() for the text conversion. If multiple addresses are associated with a name, it prints each of them. </br>  
 
+for linux  user  :./lookup   domain (example.com  ,google.com .... as example )</br>  
+windows user via powershell  : lookup.exe   domain (example.com  ,google.com .... as example )</br> 
 
 ## Please attention  :
 for windows user please read the make file </br>
