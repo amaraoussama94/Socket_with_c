@@ -134,5 +134,31 @@ struct client_info *get_client(SOCKET s)
 }
 
 /************************************************
- * drop_client():
+ * drop_client():closes the connection to a client 
+ * and removes it from the lients linked list
 ****************************************************/
+
+void drop_client(struct client_info *client) 
+{
+    //close and clean up the client's connection
+    CLOSESOCKET(client->socket);
+    struct client_info **p = &clients;
+        while(*p) 
+        {
+            if (*p == client) 
+            {
+                *p = client->next;
+                free(client);
+                return;
+            }
+            p = &(*p)->next;
+        }
+    fprintf(stderr, "drop_client not found.\n");
+    exit(1);
+}
+
+
+/***************************************************************
+ * get_client_address():returns a client's IP address as a string 
+ * (character array)
+****************************************************************/
