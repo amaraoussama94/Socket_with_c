@@ -76,3 +76,24 @@ SOCKET create_socket(const char* host, const char *port)
     }
     return socket_listen;
 }
+/**************************************
+ * Multiple connections buffering
+**************************************/
+//store information on each connected client
+
+#define MAX_REQUEST_SIZE 2047
+//yeah linked lisy dude don t cry 
+struct client_info 
+{
+    socklen_t address_length;
+    struct sockaddr_storage address;
+    SOCKET socket;
+    char request[MAX_REQUEST_SIZE + 1];
+    //number of bytes stored in that array
+    int received;
+    //point to next list in linked list 
+    struct client_info *next;
+};
+
+//To simplify our code, we store the root of our linked list in a global variable, clients
+static struct client_info *clients = 0;
