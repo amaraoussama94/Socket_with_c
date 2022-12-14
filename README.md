@@ -68,5 +68,8 @@ windows user via powershell  : lookup.exe   domain (example.com  ,google.com ...
 ### dns_query.c :
 We will now implement a utility to send DNS queries to a DNS server and receive the DNS response. This should not normally be needed in the field. It is, however, a good opportunity to better understand the DNS protocol and to get experience of sending binary UDP packets.</br>  
 
+
+for lunix user ,how to use :./dns_query example.com a   (exemple)</br> 
+windows user via powershell : dns_query.exe example.com a   (exemple)</br> 
 ## Please attention  :
 for windows user please read the make file </br>
