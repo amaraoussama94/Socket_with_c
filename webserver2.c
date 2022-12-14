@@ -130,9 +130,12 @@ struct client_info *get_client(struct client_info **client_list,SOCKET s)
     return n;
 }
 
-
+/************************************************
+ * drop_client():closes the connection to a client 
+ * and removes it from the lients linked list
+****************************************************/
 void drop_client(struct client_info **client_list,struct client_info *client) 
-{
+{//close and clean up the client's connection
     CLOSESOCKET(client->socket);
 
     struct client_info **p = client_list;
@@ -153,17 +156,23 @@ void drop_client(struct client_info **client_list,struct client_info *client)
     exit(1);
 }
 
-
+/***************************************************************
+ * get_client_address():returns a client's IP address as a string 
+ * (character array)
+****************************************************************/
 const char *get_client_address(struct client_info *ci) 
 {
-    getnameinfo((struct sockaddr*)&ci->address,
-            ci->address_length,
-            ci->address_buffer, sizeof(ci->address_buffer), 0, 0,
-            NI_NUMERICHOST);
+    //convert the binary IP address into a text address;
+    getnameinfo((struct sockaddr*)&ci->address,ci->address_length,ci->address_buffer, sizeof(ci->address_buffer), 0, 0,NI_NUMERICHOST);
     return ci->address_buffer;
 }
 
 
+/**********************************************************
+ * wait_on_clients() :uses the select() function to wait 
+ * until either a client has data available or a new
+ *  client is attempting to connect.
+ *********************************************************/
 
 
 fd_set wait_on_clients(struct client_info **client_list, SOCKET server) 
@@ -174,7 +183,7 @@ fd_set wait_on_clients(struct client_info **client_list, SOCKET server)
     SOCKET max_socket = server;
 
     struct client_info *ci = *client_list;
-
+    //loops through the linked list of connected clients and adds the socket for each one in turn
     while(ci) 
     {
 
@@ -194,6 +203,10 @@ fd_set wait_on_clients(struct client_info **client_list, SOCKET server)
 }
 
 
+/**************************************************
+ * send_400(): and send_404() are used to handle
+ *  HTTP error conditions.
+**************************************************/
 void send_400(struct client_info **client_list,struct client_info *client) 
 {
     const char *c400 = "HTTP/1.1 400 Bad Request\r\n"
@@ -212,7 +225,10 @@ void send_404(struct client_info **client_list,struct client_info *client)
     drop_client(client_list, client);
 }
 
-
+/*************************************************
+ * serve_resource(): attempts to transfer a file
+ *  to a connected client.
+*************************************************/
 
 void serve_resource(struct client_info **client_list,struct client_info *client, const char *path) 
 {
