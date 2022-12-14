@@ -71,5 +71,9 @@ We will now implement a utility to send DNS queries to a DNS server and receive 
 
 for lunix user ,how to use :./dns_query example.com a   (exemple)</br> 
 windows user via powershell : dns_query.exe example.com a   (exemple)</br> 
+
+### Parsing_URL.c , parsing_url.h :
+This is simple lib with one function . The function takes as input a URL, and it returns as output the hostname, the port number, and the document path .</br> 
+
 ## Please attention  :
 for windows user please read the make file </br>
