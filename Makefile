@@ -78,3 +78,8 @@ lookup:lookup.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc lookup.c -o lookup
 #	gcc lookup.c -o lookup.exe -lws2_32
+
+dns_query:dns_query.c
+# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
+	gcc dns_query.c -o dns_query
+#	gcc dns_query.c -o dns_query.exe -lws2_32
