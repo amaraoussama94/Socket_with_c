@@ -3,6 +3,8 @@
 /** local directory                                     **/
 /** -Our server only supports GET typerequests          **/
 /** -Our server only supports hosting one site          **/
+/** -Our server expects all hosted files to be in a     **/
+/** subdirectory called public                          **/
 /*********************************************************/
 
 #include "macrosheaderwx.h"
@@ -230,3 +232,77 @@ void send_404(struct client_info *client)
  * serve_resource(): attempts to transfer a file
  *  to a connected client.
 *************************************************/
+void serve_resource(struct client_info *client, const char *path) 
+{
+    //The connected client's IP address and the requested path are printed to aid in debugging
+    printf("serve_resource %s %s\n", get_client_address(client), path);
+    //redirect root requests and to prevent long or obviously malicious requests
+    if (strcmp(path, "/") == 0) path = "/index.html";
+    if (strlen(path) > 100) 
+    {
+        send_400(client);
+        return;
+    }
+    if (strstr(path, "..")) 
+    {
+        send_404(client);
+        return;
+    }
+    //convert the path to refer to files in the public directory
+    char full_path[128];
+    sprintf(full_path, "public%s", path);
+    //While Unix-based systems use a slash (/), Windows instead uses a backslash (\) as its standard
+    #if defined(_WIN32)
+        char *p = full_path;
+        while (*p) 
+        {.
+        //'\\' is equivalent to only one backslash. This is because the backslash has special meaning in C, and therefore
+        //the first backslash is used to escape the secondbackslash
+            if (*p == '/') 
+            {
+                *p = '\\';
+            }
+            ++p;
+        }
+    #endif
+    //check whether the requested resource actually exists
+    FILE *fp = fopen(full_path, "rb");
+    if (!fp) 
+    {
+        send_404(client);
+        return;
+    }
+    //use fseek() and ftell() to determine the requested file's size
+    fseek(fp, 0L, SEEK_END);
+    size_t cl = ftell(fp);
+    rewind(fp);
+    //get the file's type
+    const char *ct = get_content_type(full_path);
+    //reserve a temporary buffer to store header fields in
+    #define BSIZE 1024
+    char buffer[BSIZE];
+    //server prints relevant headers into it and then sends those headers to the client.
+    sprintf(buffer, "HTTP/1.1 200 OK\r\n");
+    send(client->socket, buffer, strlen(buffer), 0);
+    sprintf(buffer, "Connection: close\r\n");
+    send(client->socket, buffer, strlen(buffer), 0);
+    sprintf(buffer, "Content-Length: %u\r\n", cl);
+    send(client->socket, buffer, strlen(buffer), 0);
+    sprintf(buffer, "Content-Type: %s\r\n", ct);
+    send(client->socket, buffer, strlen(buffer), 0);
+
+    /*This has the effect of transmitting a blank line. This blank line is used by 
+    the client to delineate the HTTP header from the beginning of the HTTP body*/
+    sprintf(buffer, "\r\n");
+    send(client->socket, buffer, strlen(buffer), 0);
+    //send the actual file content
+    int r = fread(buffer, 1, BSIZE, fp);
+    //looped until fread() returns 0; this indicates that the entire file has been read
+    while (r) 
+    {
+        send(client->socket, buffer, r, 0);
+        r = fread(buffer, 1, BSIZE, fp);
+    }
+fclose(fp);
+drop_client(client);
+}
