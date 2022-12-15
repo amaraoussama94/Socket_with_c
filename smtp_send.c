@@ -175,3 +175,50 @@ int main()
     //After the connection is established, our SMTP client must not issue any commands until the
     //server responds with a 220 code
     wait_on_response(server, 220);
+    
+    /*******************************************************************************************
+     * PS  :HELO should be followed by the SMTP client's hostname; however, since we are       *
+     * probably running this client from a development machine, it's likely we don't           *
+     * have a hostname setup.For this reason, we simply send HONPWC, although any arbitrary    *
+     * string can be used. If you are running this client from a server, then you should       *
+     * change the HONPWC string to a  domain that points to your server                        *
+    ********************************************************************************************/
+   
+   //Once the server is ready to receive commands, we must issue the HELO command
+    send_format(server, "HELO HONPWC\r\n");
+    //our SMTP client must not issue any commands until the  server responds with a 250 code
+    wait_on_response(server, 250);
+   //  sender and receiver are specified here
+    char sender[MAXINPUT];
+    get_input("from: ", sender);
+    send_format(server, "MAIL FROM:<%s>\r\n", sender);
+    wait_on_response(server, 250);
+
+    char recipient[MAXINPUT];
+    get_input("to: ", recipient);
+    send_format(server, "RCPT TO:<%s>\r\n", recipient);
+    wait_on_response(server, 250);
+    //issue the DATA command
+    send_format(server, "DATA\r\n");
+    wait_on_response(server, 354);
+    //Our client program then prompts the user for an email subject line
+    char subject[MAXINPUT];
+    get_input("subject: ", subject);
+    //send the email headers
+    send_format(server, "From:<%s>\r\n", sender);
+    send_format(server, "To:<%s>\r\n", recipient);
+    send_format(server, "Subject:%s\r\n", subject);
+
+    //add a date header
+    time_t timer;
+    //get the current date and time
+    time(&timer);
+    struct tm *timeinfo;
+    //convert it into a timeinfo struct
+    timeinfo = gmtime(&timer);
+    char date[128];
+    strftime(date, 128, "%a, %d %b %Y %H:%M:%S +0000", timeinfo);
+    send_format(server, "Date:%s\r\n", date);
+    //After the email headers are sent, the email body is delineated by a blank line.
+    send_format(server, "\r\n");
+
