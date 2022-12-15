@@ -115,4 +115,44 @@ void wait_on_response(SOCKET server, int expecting)
     }
     printf("S: %s", response);
 }
-//open a TCP connection to a given hostname and port number
+//open a TCP connection to a given hostname and port number :PS see other code for more comment 
+SOCKET connect_to_host(const char *hostname, const char *port) 
+{
+    printf("Configuring remote address...\n");
+    struct addrinfo hints;
+    memset(&hints, 0, sizeof(hints));
+    hints.ai_socktype = SOCK_STREAM;
+    struct addrinfo *peer_address;
+    //resolve the hostname
+    if (getaddrinfo(hostname, port, &hints, &peer_address)) 
+    {
+        fprintf(stderr, "getaddrinfo() failed. (%d)\n", GETSOCKETERRNO());
+        exit(1);
+    }
+
+    printf("Remote address is: ");
+    //print the server IP address
+    char address_buffer[100];
+    char service_buffer[100];
+    getnameinfo(peer_address->ai_addr, peer_address->ai_addrlen,address_buffer, sizeof(address_buffer),service_buffer, sizeof(service_buffer),NI_NUMERICHOST);
+    printf("%s %s\n", address_buffer, service_buffer);
+
+    printf("Creating socket...\n");
+    SOCKET server;
+    server = socket(peer_address->ai_family,peer_address->ai_socktype, peer_address->ai_protocol);
+    if (!ISVALIDSOCKET(server)) 
+    {
+        fprintf(stderr, "socket() failed. (%d)\n", GETSOCKETERRNO());
+        exit(1);
+    }
+    
+    printf("Connecting...\n");
+    if (connect(server,peer_address->ai_addr, peer_address->ai_addrlen)) 
+    {
+        fprintf(stderr, "connect() failed. (%d)\n", GETSOCKETERRNO());
+        exit(1);
+    }
+    freeaddrinfo(peer_address);
+    printf("Connected.\n\n");
+    return server;
+}
