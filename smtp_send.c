@@ -145,7 +145,7 @@ SOCKET connect_to_host(const char *hostname, const char *port)
         fprintf(stderr, "socket() failed. (%d)\n", GETSOCKETERRNO());
         exit(1);
     }
-    
+
     printf("Connecting...\n");
     if (connect(server,peer_address->ai_addr, peer_address->ai_addrlen)) 
     {
@@ -156,3 +156,22 @@ SOCKET connect_to_host(const char *hostname, const char *port)
     printf("Connected.\n\n");
     return server;
 }
+int main() 
+{
+    //init win socket for windows 
+    #if defined(_WIN32)
+        WSADATA d;
+        if (WSAStartup(MAKEWORD(2, 2), &d)) 
+        {
+            fprintf(stderr, "Failed to initialize.\n");
+            return 1;
+        }
+    #endif
+
+    char hostname[MAXINPUT];
+    get_input("mail server: ", hostname);
+    printf("Connecting to host: %s:25\n", hostname);
+    SOCKET server = connect_to_host(hostname, "25");
+    //After the connection is established, our SMTP client must not issue any commands until the
+    //server responds with a 220 code
+    wait_on_response(server, 220);
