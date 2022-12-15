@@ -328,3 +328,91 @@ int main()
     the following code instead*/
     //SOCKET server = create_socket("127.0.0.1", "8080");
  
+    while(1) 
+    {
+        fd_set reads;
+        //wait until a new client connects or an old client sends new data
+        reads = wait_on_clients(server);
+        //detects whether a new client has connected
+        if (FD_ISSET(server, &reads)) 
+        { /*Once a new client connection has been detected, get_client() is called with the
+            argument -1; -1 is not a valid socket specifier, so get_client() creates a new struct
+            client_info*/
+            struct client_info *client = get_client(-1);
+            client->socket = accept(server,(struct sockaddr*) &(client->address),&(client->address_length));
+            if (!ISVALIDSOCKET(client->socket)) 
+            {
+                fprintf(stderr, "accept() failed. (%d)\n",GETSOCKETERRNO());
+                return 1;
+            }
+            printf("New connection from %s.\n",get_client_address(client));
+        }
+
+        struct client_info *client = clients;
+        while(client) 
+        {
+            /*We first walk through the linked list of clients and use FD_ISSET() on each
+             client to determine which clients have data available. Recall that the
+            linked list root is stored in the clients global variable*/
+            struct client_info *next = client->next;
+            if (FD_ISSET(client->socket, &reads)) 
+            {
+                /*We then check that we have memory available to store more received data for client. If
+                the client's buffer is already completely full, then we send a 400 error*/
+                if (MAX_REQUEST_SIZE == client->received) 
+                {
+                    send_400(client);
+                    continue;
+                }
+                //receive data
+                int r = recv(client->socket, client->request + client->received, MAX_REQUEST_SIZE - client->received, 0);
+                /*A client that disconnects unexpectedly causes recv() to return a non-positive number. In
+                this case, we need to use drop_client() to clean up our memory allocated for that client*/
+                if (r < 1) 
+                {
+                    printf("Unexpected disconnect from %s.\n",get_client_address(client));
+                    drop_client(client);
+                }
+                else 
+                {
+                    client->received += r;
+                    client->request[client->received] = 0;
+                    //if strstr() finds a blank line (\r\n\r\n), we know that the HTTP header has been received
+                    char *q = strstr(client->request, "\r\n\r\n");
+                    if (q) 
+                    {
+                        //Our server only handles GET requests. We also enforce that any valid path should start with a slash character
+                        if (strncmp("GET /", client->request, 5)) 
+                        {
+                        send_400(client);
+                        } 
+                        else 
+                        {
+                            //set the path variable to the beginning of the request path
+                            char *path = client->request + 4;
+                            //The end of the requested path is indicated by finding the next space character
+                            char *end_path = strstr(path, " ");
+                            if (!end_path) 
+                            {
+                                send_400(client);
+                            } 
+                            else 
+                            {
+                                *end_path = 0;
+                                serve_resource(client, path);
+                            }
+                        }
+                    } //if (q)      
+                }//else (r > 1) 
+            }//if (FD_ISSET(client->socket, &reads)) 
+            client = next;
+        }//while(client)
+    } //while(1)
+    printf("\nClosing socket...\n");
+    CLOSESOCKET(server);
+    #if defined(_WIN32)
+        WSACleanup();
+    #endif
+    printf("Finished.\n");
+    return 0;
+}
