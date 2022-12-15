@@ -11,7 +11,7 @@ tcpserverfork:tcpserverfork.c
 clean:
 #cleanup all object file
 #	  -rm *.o $(objects) 
-	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat  tcpserverfork  udpclient  udp_recvfrom udp_serve_toupper udp_client_toupper webclientget
+	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat  tcpserverfork  udpclient  udp_recvfrom udp_serve_toupper udp_client_toupper webclientget webserver
 
 
 #################################  Windows  ###########################################################################
@@ -85,8 +85,13 @@ dns_query:dns_query.c
 #	gcc dns_query.c -o dns_query.exe -lws2_32
  
 
-webclient:Parsing_URL.c webclientget.c
+webclientget:Parsing_URL.c webclientget.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc Parsing_URL.c webclientget.c   -o webclientget
 #	gcc Parsing_URL.c webclientgets.c -o webclientget.exe -lws2_32
+
+webserver:webserver.c  
+# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
+	gcc webserver.c   -o webserver
+#	gcc webserver.c  -o webserver.exe -lws2_32
 
