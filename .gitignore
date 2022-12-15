@@ -1,6 +1,7 @@
 #file to ignoee by git
 *.o
 .vscode
+
 #app of linux to ignore 
 unix_list
 sock_init
@@ -17,6 +18,7 @@ udp_serve_toupper_simple
 lookup
 dns_query
 webclientget
+webserver
 
 #app of windows to ignore 
 tcpclient.exe
@@ -30,3 +32,4 @@ udp_serve_toupper_simple.exe
 lookup.exe
 dns_query.exe
 webclientget.exe
+webserver.exe
