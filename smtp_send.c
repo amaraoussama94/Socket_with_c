@@ -238,8 +238,9 @@ int main()
             break;
         }
     }
+    printf("hello test 1 \n");
     wait_on_response(server, 250);
-
+    printf("hello test 2 \n");
     send_format(server, "QUIT\r\n");
     wait_on_response(server, 221);
 
