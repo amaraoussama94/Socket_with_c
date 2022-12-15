@@ -221,4 +221,32 @@ int main()
     send_format(server, "Date:%s\r\n", date);
     //After the email headers are sent, the email body is delineated by a blank line.
     send_format(server, "\r\n");
+    /*We can then prompt the user for the body of the email using get_input(). The body is
+    transmitted one line at a time. When the user finishes their email, they should enter a single
+    period on a line by itself*/
+    printf("Enter your email text, end with \".\" on a line by itself.\n");
+    while (1) 
+    {
+        char body[MAXINPUT];
+        get_input("> ", body);
+        send_format(server, "%s\r\n", body);
+        if (strcmp(body, ".") == 0) 
+        {
+            break;
+        }
+    }
+    wait_on_response(server, 250);
+
+    send_format(server, "QUIT\r\n");
+    wait_on_response(server, 221);
+
+    
+    printf("\nClosing socket...\n");
+    CLOSESOCKET(server);
+    #if defined(_WIN32)
+        WSACleanup();
+    #endif
+    printf("Finished.\n");
+    return 0;
+}
 
