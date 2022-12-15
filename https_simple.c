@@ -80,3 +80,91 @@ int main(int argc, char *argv[])
 
     /*initiate a TLS/SSL connection over our TCP connection. The following code creates a new SSL object,
     sets the hostname for SNI, and initiates the TLS/SSL handshake*/
+
+    //initiate a TLS connection:
+
+    //create an SSL object. This object is used to track the new SSL/TLS connection
+    SSL *ssl = SSL_new(ctx);
+    if (!ctx) 
+    {
+        fprintf(stderr, "SSL_new() failed.\n");
+        return 1;
+    }
+    //set the domain for the server we are trying to connect to .This allows OpenSSL to use SNI.
+
+    /*************************************************************************************
+     * The call to SSL_set_tlsext_host_name() is optional, but useful if you may be
+        connecting to a server that hosts multiple domains. Without this call, the server 
+        wouldn't know which certificates are relevant to this connection
+    *************************************************************************************/
+    if (!SSL_set_tlsext_host_name(ssl, hostname)) 
+    {
+        fprintf(stderr, "SSL_set_tlsext_host_name() failed.\n");
+        ERR_print_errors_fp(stderr);
+        return 1;
+    }
+    //o initiate the new TLS/SSL  connection on our existing TCP socket
+    SSL_set_fd(ssl, server);
+    if (SSL_connect(ssl) == -1) 
+    {
+        fprintf(stderr, "SSL_connect() failed.\n");
+        ERR_print_errors_fp(stderr);
+        return 1;
+    }
+    //see which cipher the TLS connection is using
+    printf ("SSL/TLS using %s\n", SSL_get_cipher(ssl));
+    //see the server's certificate
+
+    //get the server's certificate
+    X509 *cert = SSL_get_peer_certificate(ssl);
+    if (!cert) 
+    {
+        fprintf(stderr, "SSL_get_peer_certificate() failed.\n");
+        return 1;
+    }
+    char *tmp;
+    if ((tmp = X509_NAME_oneline(X509_get_subject_name(cert), 0, 0))) 
+    {
+        printf("subject: %s\n", tmp);
+        OPENSSL_free(tmp);
+    }
+    if ((tmp = X509_NAME_oneline(X509_get_issuer_name(cert), 0, 0))) 
+    {
+        printf("issuer: %s\n", tmp);
+        OPENSSL_free(tmp);
+    }
+    X509_free(cert);
+    //send our HTTPS request
+    char buffer[2048];
+    sprintf(buffer, "GET / HTTP/1.1\r\n");
+    sprintf(buffer + strlen(buffer), "Host: %s:%s\r\n", hostname, port);
+    sprintf(buffer + strlen(buffer), "Connection: close\r\n");
+    sprintf(buffer + strlen(buffer), "User-Agent: https_simple\r\n");
+    sprintf(buffer + strlen(buffer), "\r\n");
+    //send data over ssl
+    SSL_write(ssl, buffer, strlen(buffer));
+    printf("Sent Headers:\n%s", buffer);
+    //waits for data from the server until the connection is closed
+    while(1) 
+    {
+        int bytes_received = SSL_read(ssl, buffer, sizeof(buffer));
+        if (bytes_received < 1) 
+        {
+            printf("\nConnection closed by peer.\n");
+            break;
+        }
+        printf("Received (%d bytes): '%.*s'\n",
+        bytes_received, bytes_received, buffer);
+    }
+
+    printf("\nClosing socket...\n");
+    SSL_shutdown(ssl);
+    CLOSESOCKET(server);
+    SSL_free(ssl);
+    SSL_CTX_free(ctx);
+    #if defined(_WIN32)
+        WSACleanup();
+    #endif
+    printf("Finished.\n");
+    return 0;
+}
