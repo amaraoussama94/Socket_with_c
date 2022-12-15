@@ -286,7 +286,7 @@ void serve_resource(struct client_info *client, const char *path)
     send(client->socket, buffer, strlen(buffer), 0);
     sprintf(buffer, "Connection: close\r\n");
     send(client->socket, buffer, strlen(buffer), 0);
-    sprintf(buffer, "Content-Length: %u\r\n", cl);
+    sprintf(buffer, "Content-Length: %lu\r\n", cl);
     send(client->socket, buffer, strlen(buffer), 0);
     sprintf(buffer, "Content-Type: %s\r\n", ct);
     send(client->socket, buffer, strlen(buffer), 0);
@@ -320,14 +320,14 @@ int main()
             return 1;
         }
     #endif
- 
+    /*******************************1st commit ************************/
     //create the server socket
     SOCKET server = create_socket(0, "8080");
-
+    /*******************************2st commit ************************/
     /*If you want to accept connections from only the local system, and not outside systems, use
     the following code instead*/
     //SOCKET server = create_socket("127.0.0.1", "8080");
- 
+    /*******************************3st commit ************************/
     while(1) 
     {
         fd_set reads;
