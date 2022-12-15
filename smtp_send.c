@@ -42,3 +42,31 @@ void send_format(SOCKET server, const char *text, ...)
 }
 
 //returns the parsed response code
+int parse_response(const char *response) 
+{
+    const char *k = response;
+    //checking for a null terminator in the first three characters of the response
+    if (!k[0] || !k[1] || !k[2]) 
+    {
+        return 0;
+    }
+    //loop goes until a null-terminating character is found three characters out
+    for (; k[3]; ++k) 
+    {
+        if (k == response || k[-1] == '\n') 
+        {
+            if (isdigit(k[0]) && isdigit(k[1]) && isdigit(k[2])) 
+            {
+                if (k[3] != '-') 
+                {
+                    if (strstr(k, "\r\n")) 
+                    {
+                        //convert the responsecode to an integer
+                        return strtol(k, 0, 10);
+                    }
+                }
+            }
+        }
+    }
+    return 0;
+}
