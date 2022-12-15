@@ -321,3 +321,10 @@ int main()
         }
     #endif
  
+    //create the server socket
+    SOCKET server = create_socket(0, "8080");
+
+    /*If you want to accept connections from only the local system, and not outside systems, use
+    the following code instead*/
+    //SOCKET server = create_socket("127.0.0.1", "8080");
+ 
