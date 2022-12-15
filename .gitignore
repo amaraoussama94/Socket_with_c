@@ -20,6 +20,7 @@ dns_query
 webclientget
 webserver
 webserver2
+smtp_send
 
 #app of windows to ignore 
 tcpclient.exe
@@ -35,3 +36,4 @@ dns_query.exe
 webclientget.exe
 webserver.exe
 webserver2.exe
+smtp_send.exe
