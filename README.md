@@ -96,7 +96,11 @@ PS: make 2webserver  </br>
 
 ## smtp_send.c :
 The program we develop  is used to deliver mail directly to the recipient's email provider. It is not useful to deliver mail to a relay server because we are not going to implement authentication techniques. Generally, SMTP servers do not relay mail without authenticating that the sender has an account with them.</br> 
-how to use :  after make it (mean compile it using make file) . simply run  ./smtp_send (smtp_send.exe for windows user  )</br>   
+how to use :  after make it (mean compile it using make file) . simply run  ./smtp_send (smtp_send.exe for windows user  )</br>  
+then,Connecting to host: gmail-smtp-in.k.google.com </br> 
+then fill all other needed info .</br> 
+to close mail that you want send just send . </br> 
+ 
 PS: The SMTP protocol we describe in this code  is unsecured and not encrypted. This is convenient for explanation and learning purposes, but in the real world, you may want to secure your email transfer.</br> 
 
 ## Please attention  :
