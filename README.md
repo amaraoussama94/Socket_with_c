@@ -103,5 +103,8 @@ to close mail that you want send just send . </br>
  
 PS: The SMTP protocol we describe in this code  is unsecured and not encrypted. This is convenient for explanation and learning purposes, but in the real world, you may want to secure your email transfer.</br> 
 
+##  openssl_version.c :
+test OpenSSL library installed or no</br> 
+
 ## Please attention  :
 for windows user please read the make file </br>
