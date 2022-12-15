@@ -80,5 +80,9 @@ client takes as input a URL. It thenattempts to connect to the host and retrieve
 
 for lunix user ,how to use : ./ webclientget http://example.com/  (exemple)</br> 
 windows user via powershell :  webclientget.exe http://example.com/    (exemple)</br> 
+
+## webserver.c
+-HTTP web server that can serve static files from a local directory .Our server only supports GET typerequests .Our server only supports hosting one site. Our server expects all hosted files to be in a subdirectory called public . </br> 
+            
 ## Please attention  :
 for windows user please read the make file </br>
