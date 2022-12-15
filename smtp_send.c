@@ -70,3 +70,49 @@ int parse_response(const char *response)
     }
     return 0;
 }
+
+void wait_on_response(SOCKET server, int expecting) 
+{
+    //for storing the SMTP server's response
+    char response[MAXRESPONSE+1];
+    char *p = response;
+    //useful to ensure we do not attempt to write past the buffer end
+    char *end = response + MAXRESPONSE;
+    //indicate that no response code has been received yet.
+    int code = 0;
+    do 
+    {
+        //receive data from the SMTP server
+        /*We are careful to use end to make sure received data 
+        isn't written past the end of response.*/
+        int bytes_received = recv(server, p, end - p, 0);
+        if (bytes_received < 1) 
+        {
+            fprintf(stderr, "Connection dropped.\n");
+            exit(1);
+        }
+        p += bytes_received;
+        /*p is incremented to the end of the received data, and a null
+        terminating character is set.*/
+        *p = 0;
+        //ensures that we haven't written to the  end of the response buffer
+        if (p == end) 
+        {
+            fprintf(stderr, "Server response too large:\n");
+            fprintf(stderr, "%s", response);
+            exit(1);
+        }
+        //heck whether a full SMTP response has been received. If so, then code is set to that response. If not, then code is
+        //equal to 0, and the loop continues to receive additional data. 
+        code = parse_response(response);
+    } while (code == 0);
+    //checks that the received SMTP response code is as expected
+    if (code != expecting) 
+    {
+        fprintf(stderr, "Error from server:\n");
+        fprintf(stderr, "%s", response);
+        exit(1);
+    }
+    printf("S: %s", response);
+}
+//open a TCP connection to a given hostname and port number
