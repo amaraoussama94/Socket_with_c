@@ -309,7 +309,7 @@ void serve_resource(struct client_info **client_list,struct client_info *client,
 
 int main() 
 {
-
+//initializing Winsock on Window
 #if defined(_WIN32)
     WSADATA d;
     if (WSAStartup(MAKEWORD(2, 2), &d)) 
@@ -318,7 +318,7 @@ int main()
         return 1;
     }
 #endif
-
+    //create the server socket
     SOCKET server = create_socket(0, "8080");
 
     struct client_info *client_list = 0;
@@ -328,10 +328,13 @@ int main()
 
 
         fd_set reads;
+        ////wait until a new client connects or an old client sends new data
         reads = wait_on_clients(&client_list, server);
-
+        //detects whether a new client has connected
         if (FD_ISSET(server, &reads)) 
-        {
+        {/*Once a new client connection has been detected, get_client() is called with the
+            argument -1; -1 is not a valid socket specifier, so get_client() creates a new struct
+            client_info*/
             struct client_info *client = get_client(&client_list, -1);
 
             client->socket = accept(server, (struct sockaddr*) &(client->address),&(client->address_length));
@@ -352,10 +355,15 @@ int main()
         struct client_info *client = client_list;
         while(client) 
         {
+            /*We first walk through the linked list of clients and use FD_ISSET() on each
+             client to determine which clients have data available. Recall that the
+            linked list root is stored in the clients global variable*/
             struct client_info *next = client->next;
 
             if (FD_ISSET(client->socket, &reads)) 
             {
+                /*We then check that we have memory available to store more received data for client. If
+                the client's buffer is already completely full, then we send a 400 error*/
 
                 if (MAX_REQUEST_SIZE == client->received) 
                 {
@@ -365,7 +373,8 @@ int main()
                 }
 
                 int r = recv(client->socket,client->request + client->received, MAX_REQUEST_SIZE - client->received, 0);
-
+                /*A client that disconnects unexpectedly causes recv() to return a non-positive number. In
+                this case, we need to use drop_client() to clean up our memory allocated for that client*/
                 if (r < 1) 
                 {
                     printf("Unexpected disconnect from %s.\n",get_client_address(client));
@@ -377,18 +386,20 @@ int main()
 
                     client->received += r;
                     client->request[client->received] = 0;
-
+                    ////if strstr() finds a blank line (\r\n\r\n), we know that the HTTP header has been received
                     char *q = strstr(client->request, "\r\n\r\n");
                     if (q) 
                     {
                         *q = 0;
-
+                        //Our server only handles GET requests. We also enforce that any valid path should start with a slash character
                         if (strncmp("GET /", client->request, 5)) {
                             send_400(&client_list, client);
                         } 
                         else 
                         {
+                            //set the path variable to the beginning of the request path
                             char *path = client->request + 4;
+                            //The end of the requested path is indicated by finding the next space character
                             char *end_path = strstr(path, " ");
                             if (!end_path) 
                             {
