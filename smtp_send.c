@@ -27,3 +27,18 @@ void get_input(const char *prompt, char *buffer)
 }
 
 //function that can send formatted strings directly over the network
+//yap variadic function  see the link for more info :https://www.geeksforgeeks.org/variadic-functions-in-c/ 
+void send_format(SOCKET server, const char *text, ...) 
+{
+    char buffer[1024];
+    va_list args;
+    va_start(args, text);
+    //format the text into that buffer , we trust to much our client thats why we don t check for buffer overflow :p 
+    vsprintf(buffer, text, args);
+    va_end(args);
+    send(server, buffer, strlen(buffer), 0);
+    //C: is printed preceding it to indicate that the text was sent by us, the client
+    printf("C: %s", buffer);
+}
+
+//returns the parsed response code
