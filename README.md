@@ -86,11 +86,18 @@ windows user via powershell :  webclientget.exe http://example.com/    (exemple)
 ## webserver.c
 -HTTP web server that can serve static files from a local directory .Our server only supports GET typerequests .Our server only supports hosting one site. Our server expects all hosted files to be in a subdirectory called public . </br> 
 
-how to use :  after make it (mean compile it using make file) . simply run the server ./webserver then go to your web browser and tape http://127.0.0.1:8080/
+how to use :  after make it (mean compile it using make file) . simply run the server ./webserver (webserver.exe for windows user  ) then go to your web browser and tape http://127.0.0.1:8080/
 then yo got it yey . </br> 
 PS: You can also drop different files into the public folder and play around with creating more complicated websites.</br> 
+
 ## webserver2.c
 -It behaves exactly like the code we developed, but it avoids having global state(at the expense of a little added verbosity). This may make web_server2.c more suitable for integration into more significant projects and continued development. </br> 
+PS: make 2webserver  </br> 
+
+## smtp_send.c :
+The program we develop  is used to deliver mail directly to the recipient's email provider. It is not useful to deliver mail to a relay server because we are not going to implement authentication techniques. Generally, SMTP servers do not relay mail without authenticating that the sender has an account with them.</br> 
+how to use :  after make it (mean compile it using make file) . simply run  ./smtp_send (smtp_send.exe for windows user  )</br>   
+PS: The SMTP protocol we describe in this code  is unsecured and not encrypted. This is convenient for explanation and learning purposes, but in the real world, you may want to secure your email transfer.</br> 
 
 ## Please attention  :
 for windows user please read the make file </br>
