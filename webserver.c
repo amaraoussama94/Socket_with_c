@@ -306,3 +306,18 @@ void serve_resource(struct client_info *client, const char *path)
 fclose(fp);
 drop_client(client);
 }
+/******************
+ * The main loop
+*******************/
+int main() 
+{
+    //initializing Winsock on Window
+    #if defined(_WIN32)
+        WSADATA d;
+        if (WSAStartup(MAKEWORD(2, 2), &d)) 
+        {
+            fprintf(stderr, "Failed to initialize.\n");
+            return 1;
+        }
+    #endif
+ 
