@@ -11,7 +11,7 @@ tcpserverfork:tcpserverfork.c
 clean:
 #cleanup all object file
 #	  -rm *.o $(objects) 
-	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat  tcpserverfork  udpclient  udp_recvfrom udp_serve_toupper udp_client_toupper webclientget webserver webserver2  smtp_send                                                                                                         
+	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat  tcpserverfork  udpclient  udp_recvfrom udp_serve_toupper udp_client_toupper webclientget webserver webserver2  smtp_send  openssl_version                                                                                                       
 
 
 #################################  Windows  ###########################################################################
@@ -104,4 +104,9 @@ smtp_send:smtp_send.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc smtp_send.c   -o smtp_send
 #	gcc smtp_send.c  -o smtp_send.exe -lws2_32
+
+openssl_version:openssl_version.c  
+# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
+	gcc openssl_version.c   -o openssl_version  -lcrypto
+#	gcc openssl_version.c  -o openssl_version.exe   -lcrypto
 
