@@ -1,7 +1,10 @@
 /************************************
  * A simple SMTP client program
 ************************************/
-
+/*****************************************************************/
+/**    Ps:please uncomment timie header file from               **/
+/**        "macrosheaderwx.h" before compiling this             **/
+/*****************************************************************/
 #include "macrosheaderwx.h"
 #include <ctype.h>
 #include <stdarg.h>
