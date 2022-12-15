@@ -78,7 +78,7 @@ This is simple lib with one function . The function takes as input a URL, and it
 ### webclientget.c :
 client takes as input a URL. It thenattempts to connect to the host and retrieve the resource given by the URL. The program displays the HTTP headers that are sent and received, and it attempts to parse out the requested resource content from the HTTP response.</br> 
 
-<p align="center"> <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/HTTpserver_client_GET_request.png" width="350" height="600" >  </p>
+<p align="center"> <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/HTTpserver_client_GET_request.png" width="600" height="400" >  </p>
 
 for lunix user ,how to use : ./ webclientget http://example.com/  (exemple)</br> 
 windows user via powershell :  webclientget.exe http://example.com/    (exemple)</br> 
