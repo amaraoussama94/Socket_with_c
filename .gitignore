@@ -2,6 +2,11 @@
 *.o
 .vscode
 
+
+#app of windows to ignore 
+*.exe
+
+
 #app of linux to ignore 
 unix_list
 sock_init
@@ -21,19 +26,5 @@ webclientget
 webserver
 webserver2
 smtp_send
+openssl_version
 
-#app of windows to ignore 
-tcpclient.exe
-tcpserver.exe
-tcpserverchat.exe
-udpclient .exe
-udp_recvfrom.exe
-udp_serve_toupper.exe
-udp_client_toupper.exe
-udp_serve_toupper_simple.exe
-lookup.exe
-dns_query.exe
-webclientget.exe
-webserver.exe
-webserver2.exe
-smtp_send.exe
