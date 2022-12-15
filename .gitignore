@@ -19,6 +19,7 @@ lookup
 dns_query
 webclientget
 webserver
+webserver2
 
 #app of windows to ignore 
 tcpclient.exe
@@ -33,3 +34,4 @@ lookup.exe
 dns_query.exe
 webclientget.exe
 webserver.exe
+webserver2.exe
