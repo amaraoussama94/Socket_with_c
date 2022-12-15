@@ -86,5 +86,8 @@ windows user via powershell :  webclientget.exe http://example.com/    (exemple)
 ## webserver.c
 -HTTP web server that can serve static files from a local directory .Our server only supports GET typerequests .Our server only supports hosting one site. Our server expects all hosted files to be in a subdirectory called public . </br> 
 
+## webserver2.c
+-same as webserver.c only difference static struct client_info *clients  is not used here ( so we must pass it as  argument to every function that need it ). </br> 
+
 ## Please attention  :
 for windows user please read the make file </br>
