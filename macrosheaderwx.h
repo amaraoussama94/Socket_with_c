@@ -40,8 +40,11 @@
 #include <errno.h>
 
 #endif
-
-
+#include <openssl/crypto.h>
+#include <openssl/x509.h>
+#include <openssl/pem.h>
+#include <openssl/ssl.h>
+#include <openssl/err.h>
 #if defined(_WIN32)
 #define ISVALIDSOCKET(s) ((s) != INVALID_SOCKET)
 #define CLOSESOCKET(s) closesocket(s)
@@ -60,3 +63,10 @@
 #include <stdlib.h>
 // for webclientget and smtp_send uncomment it 
 #include <time.h> 
+
+// for https_simple uncomment it 
+#include <openssl/crypto.h>
+#include <openssl/x509.h>
+#include <openssl/pem.h>
+#include <openssl/ssl.h>
+#include <openssl/err.h>
