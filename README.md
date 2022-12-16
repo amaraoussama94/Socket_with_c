@@ -144,7 +144,11 @@ openssl x509 -text -noout -in cert.pem | unix2dos </br>
 ##  tls_time_server.c :
 simple time server that displays the time to an HTTPS client. This program is an adaptation of time_server.c .Our server uses a while loop to accept multiple connections.</br> 
 How to use :</br> 
+Generate your certification use section "Self-signed certificates with OpenSSL" </br> 
 Fisrt run the server .</br> 
+You can connect to the time server by navigating your web browser to  https://127.0.0.1:8080 </br> 
+To access the time server, you need to add an exception in the browser. The method for this is different in each browser, but generally, there is an Advanced button that leads to an option to either add a certificate exception or otherwise proceed with the insecure connection.</br> 
+
 
 ## Please attention  :
 for windows user please read the make file </br>
