@@ -135,10 +135,6 @@ tls_time_server:tls_time_server.c
 	gcc tls_time_server.c   -o tls_time_server  -lssl -lcrypto
 #	gcc tls_time_server.c  -o tls_time_server.exe   -lssl -lcrypto -lws2_32
 
-tls_time_server:tls_time_server.c  
-# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
-	gcc tls_time_server.c   -o tls_time_server  -lssl -lcrypto
-#	gcc tls_time_server.c  -o tls_time_server.exe   -lssl -lcrypto -lws2_32
 
 https_server:https_server.c  
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
