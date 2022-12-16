@@ -143,6 +143,8 @@ openssl x509 -text -noout -in cert.pem | unix2dos </br>
 
 ##  tls_time_server.c :
 simple time server that displays the time to an HTTPS client. This program is an adaptation of time_server.c .Our server uses a while loop to accept multiple connections.</br> 
+How to use :</br> 
+Fisrt run the server .</br> 
 
 ## Please attention  :
 for windows user please read the make file </br>
