@@ -28,3 +28,5 @@ webserver2
 smtp_send
 openssl_version
 https_simple
+https_get
+tls_client
