@@ -11,7 +11,7 @@ tcpserverfork:tcpserverfork.c
 clean:
 #cleanup all object file
 #	  -rm *.o $(objects) 
-	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat  tcpserverfork  udpclient  udp_recvfrom udp_serve_toupper udp_client_toupper webclientget webserver webserver2  smtp_send  openssl_version   https_simple                                                                                                    
+	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat  tcpserverfork  udpclient  udp_recvfrom udp_serve_toupper udp_client_toupper webclientget webserver webserver2  smtp_send  openssl_version   https_simple   https_get tls_client  tls_get_cert                                                                                               
 
 
 #################################  Windows  ###########################################################################
@@ -114,4 +114,19 @@ https_simple:https_simple.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc https_simple.c   -o https_simple  -lssl -lcrypto
 #	gcc https_simple.c  -o https_simple.exe   -lssl -lcrypto -lws2_32
+
+https_get:https_get.c  
+# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
+	gcc https_get.c   -o https_get  -lssl -lcrypto
+#	gcc https_get.c  -o https_get.exe   -lssl -lcrypto -lws2_32
+
+tls_client:tls_client.c  
+# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
+	gcc tls_client.c   -o tls_client  -lssl -lcrypto
+#	gcc tls_client.c  -o tls_client.exe   -lssl -lcrypto -lws2_32
+
+tls_get_cert:tls_get_cert.c  
+# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
+	gcc tls_get_cert.c   -o tls_get_cert  -lssl -lcrypto
+#	gcc tls_get_cert.c  -o tls_get_cert.exe   -lssl -lcrypto -lws2_32
 
