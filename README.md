@@ -162,11 +162,17 @@ To access the time server, you need to add an exception in the browser. The meth
 Simple code to see the libssh version </br>
 
 ## ssh_connect.c :
-Simple code tha allow you to connect  to ssh server . Note please that you need to instal open ssh to try tis project .How to use :</br> 
+Simple code tha allow you to connect  to ssh server . Note please that you need to instal open ssh to try tis project . 
 How to use :How to use :</br> 
 -./ss_connect 127.0.0.1(@IP of the server ) 22 (Port number if  you change it or it s optional )</br> 
 -./ss_connect.exe 127.0.0.1(@IP of the server ) 22 (Port number if  you change it or it s optional )</br> 
 
+## ssh_auth.c :
+Simple code tha allow you to connect  to ssh server and authentify  . Note please that you need to instal open ssh to try tis project . 
+how to use :</br> 
+-./ssh_auth example.com 22 alice</br> 
+-ssh_auth.exe example.com 22 alice</br> 
+In the preceding screenshot, ssh_auth was used to successfully authenticate with the  locally running SSH server. The ssh_auth program used password authentication with the username alice and the password password123. Needless to say, you need to change the username and password as appropriate for your SSH server</br> 
 
 ## Please attention  :
 for windows user please read the make file </br>
