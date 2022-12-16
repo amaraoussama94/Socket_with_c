@@ -3,6 +3,7 @@
 /**        "macrosheaderwx.h" before compiling this             **/
 /*****************************************************************/
 #include "macrosheaderwx.h"
+#include <fcntl.h>
 
 #if defined(_WIN32)
 #include <conio.h>
