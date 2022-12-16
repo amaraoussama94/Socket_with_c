@@ -29,4 +29,5 @@ smtp_send
 openssl_version
 https_simple
 https_get
+tls_get_cert
 tls_client
