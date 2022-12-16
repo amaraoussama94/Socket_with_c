@@ -161,5 +161,12 @@ To access the time server, you need to add an exception in the browser. The meth
 
 Simple code to see the libssh version </br>
 
+## ssh_connect.c :
+Simple code tha allow you to connect  to ssh server . Note please that you need to instal open ssh to try tis project .How to use :</br> 
+How to use :How to use :</br> 
+-./ss_connect 127.0.0.1(@IP of the server ) 22 (Port number if  you change it or it s optional )</br> 
+-./ss_connect.exe 127.0.0.1(@IP of the server ) 22 (Port number if  you change it or it s optional )</br> 
+
+
 ## Please attention  :
 for windows user please read the make file </br>
