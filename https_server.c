@@ -218,7 +218,7 @@ void serve_resource(struct client_info *client, const char *path)
     }
 
     char full_path[128];
-    sprintf(full_path, "../public%s", path);
+    sprintf(full_path, "public%s", path);
 
 #if defined(_WIN32)
     char *p = full_path;
