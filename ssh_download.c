@@ -169,6 +169,12 @@ int main(int argc, char *argv[])
     printf("Downloading file %s (%d bytes, permissions 0%o\n",fname, fsize, fpermission);
     free(fname);
 
+    char *buffer = malloc(fsize);
+    if (!buffer) 
+    {
+        fprintf(stderr, "malloc() failed.\n");
+        return 1;
+    }
     //accepts the new file request
     ssh_scp_accept_request(scp);
     //downloads the file
