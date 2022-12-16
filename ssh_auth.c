@@ -88,14 +88,42 @@ int main(int argc, char *argv[])
     default: printf("Error. Known: %d\n", known); return 1;
     }
 
+    //prompting the user to trust a connection
+    if (known == SSH_KNOWN_HOSTS_CHANGED ||known == SSH_KNOWN_HOSTS_OTHER ||known == SSH_KNOWN_HOSTS_UNKNOWN ||known == SSH_KNOWN_HOSTS_NOT_FOUND) 
+    {
+        printf("Do you want to accept and remember this host? Y/N\n");
+        char answer[10];
+        fgets(answer, sizeof(answer), stdin);
+        if (answer[0] != 'Y' && answer[0] != 'y') 
+        {
+            return 0;
+        }
+        ssh_session_update_known_hosts(ssh);
+    }
+    /**************************
+     * Client authentication
+    ***************************/
+   //SSH server must know what user you are trying to authenticate as
+   ssh_options_set(ssh, SSH_OPTIONS_USER, "alice");
 
-
-
-
-
-
-
-
+   //prompts for a password and sends it to the connected SSH server
+    printf("Password: ");
+    char password[128];
+    //obtain the password from the user
+    fgets(password, sizeof(password), stdin);
+    /*The fgets() function always includes the newline character with the input, which we
+    don't want. The password[strlen(password)-1] = 0 code effectively shortens the
+    password by one character, thus removing the newline character*/
+    password[strlen(password)-1] = 0;
+    if (ssh_userauth_password(ssh, 0, password) != SSH_AUTH_SUCCESS) 
+    {
+        fprintf(stderr, "ssh_userauth_password() failed.\n%s\n",ssh_get_error(ssh));
+        return 0;
+    } 
+    else 
+    {
+        printf("Authentication successful!\n");
+    }
     ssh_disconnect(ssh);
     ssh_free(ssh);
     return 0;
