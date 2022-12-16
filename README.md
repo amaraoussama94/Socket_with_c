@@ -141,5 +141,8 @@ openssl x509 -text -noout -in cert.pem</br>
 Windows using MSYS, you may get garbled line endings from the previous command. If so, try using unix2dos to fix it, as shown by the following command:</br> 
 openssl x509 -text -noout -in cert.pem | unix2dos </br> 
 
+##  tls_time_server.c :
+simple time server that displays the time to an HTTPS client. This program is an adaptation of time_server.c .Our server uses a while loop to accept multiple connections.</br> 
+
 ## Please attention  :
 for windows user please read the make file </br>
