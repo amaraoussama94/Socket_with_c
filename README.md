@@ -157,6 +157,9 @@ Fisrt run the server .</br>
 You can connect to the time server by navigating your web browser to  https://127.0.0.1:8080 </br> 
 To access the time server, you need to add an exception in the browser. The method for this is different in each browser, but generally, there is an Advanced button that leads to an option to either add a certificate exception or otherwise proceed with the insecure connection.</br> 
 
+## libssh_test.c:
+
+Simple code to see the libssh version </br>
 
 ## Please attention  :
 for windows user please read the make file </br>
