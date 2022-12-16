@@ -39,3 +39,4 @@ https_server
 libssh_test
 ssh_connect
 ssh_auth
+ssh_command
