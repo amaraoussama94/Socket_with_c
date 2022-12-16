@@ -3,7 +3,9 @@
 /**        "macrosheaderwx.h" before compiling this             **/
 /*****************************************************************/
 #include "macrosheaderwx.h"
-
+/*********************************************************
+ * PS: For more comment and info see the webserver.c
+***********************************************************/
 
 
 const char *get_content_type(const char* path) 
