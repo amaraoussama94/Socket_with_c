@@ -172,14 +172,21 @@ Simple code tha allow you to connect  to ssh server and authentify  . Note pleas
 how to use :</br> 
 -./ssh_auth example.com 22 alice</br> 
 -ssh_auth.exe example.com 22 alice</br> 
-In the preceding screenshot, ssh_auth was used to successfully authenticate with the  locally running SSH server. The ssh_auth program used password authentication with the username alice and the password password123. Needless to say, you need to change the username and password as appropriate for your SSH server</br> 
+ssh_auth was used to successfully authenticate with the  locally running SSH server. The ssh_auth program used password authentication with the username alice and the password password123. Needless to say, you need to change the username and password as appropriate for your SSH server</br> 
 
 ## ssh_command.c :
 Simple code tha allow you to connect  to ssh server ,authentify  and send command to remote machine . Note please that you need to instal open ssh to try tis project . 
 how to use :</br> 
--./ssh_auth example.com 22 alice</br> 
--ssh_auth.exe example.com 22 alice</br> 
-In the preceding screenshot, ssh_auth was used to successfully authenticate with the  locally running SSH server. The ssh_auth program used password authentication with the username alice and the password password123. Needless to say, you need to change the username and password as appropriate for your SSH server</br> 
+-./ssh_command example.com 22 alice</br> 
+-ssh_command.exe example.com 22 alice</br> 
+ssh_auth was used to successfully authenticate with the  locally running SSH server. The ssh_auth program used password authentication with the username alice and the password password123. Needless to say, you need to change the username and password as appropriate for your SSH server</br> 
+
+## ssh_download.c :
+Simple code tha allow you to connect  to ssh server ,authentify  and send file to remote machine . Note please that you need to instal open ssh to try tis project . 
+how to use :</br> 
+-./ssh_download example.com 22 alice</br> 
+-ssh_download.exe example.com 22 alice</br> 
+ ssh_auth was used to successfully authenticate with the  locally running SSH server. The ssh_auth program used password authentication with the username alice and the password password123. Needless to say, you need to change the username and password as appropriate for your SSH server</br> 
 
 
 ## Please attention  :
