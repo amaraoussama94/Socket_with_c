@@ -149,6 +149,8 @@ Fisrt run the server .</br>
 You can connect to the time server by navigating your web browser to  https://127.0.0.1:8080 </br> 
 To access the time server, you need to add an exception in the browser. The method for this is different in each browser, but generally, there is an Advanced button that leads to an option to either add a certificate exception or otherwise proceed with the insecure connection.</br> 
 
+## https_server.c :
+This program is a modification of web_server.c , Building a Simple Web Server. It can be usedto serve a simple static website over HTTPS. In the https_server.c program, the basic TLS/SSL connection is set up and established the same way as shown in tls_time_server.c. Once the secure connection is established, the connection is simply treated as HTTP
 
 ## Please attention  :
 for windows user please read the make file </br>
