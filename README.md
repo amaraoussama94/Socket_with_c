@@ -118,8 +118,14 @@ This is tcpclient.c , An In-Depth Overview of TCP Connections, but it has been m
 ## https_get.c: 
 This is the webclientget.c program from Chapter 6, Building a Simple Web Client, but it has been modified for HTTPS. You can think of it as the extended version of https_simple.c.
 
+for lunix user ,how to use : ./ webclientget https://example.com/  (exemple)</br> 
+windows user via powershell :  webclientget.exe https://example.com/    (exemple)</br> 
+
 ## tls_get_cert.c:
 This is like https_simple.c, but it simply prints the connected server's certificate and exits.
+
+Linux user :./https_simple example.org 443</br> 
+Windows user :https_simple example.org 443</br> 
 
 ## Please attention  :
 for windows user please read the make file </br>
