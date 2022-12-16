@@ -133,6 +133,48 @@ int main(int argc, char *argv[])
         fprintf(stderr, "ssh_channel_new() failed.\n");
         return 0;
     }
+
+    /*The SSH protocol implements many types of channels. The session channel type is used for
+    executing remote commands and transferring files.*/
+    if (ssh_channel_open_session(channel) != SSH_OK) 
+    {
+    fprintf(stderr, "ssh_channel_open_session() failed.\n");
+    return 0;
+    }
+
+
+    //issue a command to run
+    printf("Remote command to execute: ");
+    char command[128];
+    fgets(command, sizeof(command), stdin);
+    command[strlen(command)-1] = 0;
+    if (ssh_channel_request_exec(channel, command) != SSH_OK) 
+    {
+        fprintf(stderr, "ssh_channel_open_session() failed.\n");
+        return 1;
+    }
+
+    //receive the command output. The following code loops until the entire output is read
+
+    char output[1024];
+    int bytes_received;
+    while ((bytes_received =
+    ssh_channel_read(channel, output, sizeof(output), 0))) 
+    {
+        if (bytes_received < 0) 
+        {
+            fprintf(stderr, "ssh_channel_read() failed.\n");
+            return 1;
+        }
+        printf("%.*s", bytes_received, output);
+    }
+    /*After the entire output from the command has been received, the client should send an
+    end-of-file (EOF) over the channel,*/
+    ssh_channel_send_eof(channel);
+    ssh_channel_close(channel);
+    ssh_channel_free(channel);
+
+    
     ssh_disconnect(ssh);
     ssh_free(ssh);
     return 0;
