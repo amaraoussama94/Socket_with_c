@@ -11,7 +11,7 @@ tcpserverfork:tcpserverfork.c
 clean:
 #cleanup all object file
 #	  -rm *.o $(objects) 
-	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat  tcpserverfork  udpclient  udp_recvfrom udp_serve_toupper udp_client_toupper webclientget webserver webserver2  smtp_send  openssl_version   https_simple   https_get tls_client  tls_get_cert   tls_time_server  https_server   libssh_test   ssh_connect   ssh_auth                                                                                  
+	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat  tcpserverfork  udpclient  udp_recvfrom udp_serve_toupper udp_client_toupper webclientget webserver webserver2  smtp_send  openssl_version   https_simple   https_get tls_client  tls_get_cert   tls_time_server  https_server   libssh_test   ssh_connect   ssh_auth  ssh_command                                                                                
 
 
 #################################  Windows  ###########################################################################
@@ -155,7 +155,11 @@ ssh_connect:ssh_connect.c
 ssh_auth:ssh_auth.c  
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc ssh_auth.c   -o ssh_auth  -lssh
-#	gcc ssh_auth.c  -o ssh_auth.exe   -lssh
+#	gcc ssh_auth.c  -o ssh_auth.exe   -lssh     
 
+ssh_command:ssh_command.c  
+# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
+	gcc ssh_command.c   -o ssh_command  -lssh
+#	gcc ssh_command.c  -o ssh_command.exe   -lssh    
 
 
