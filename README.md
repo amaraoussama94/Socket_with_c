@@ -114,6 +114,8 @@ Windows user :https_simple example.org 443</br>
 
 ## tls_client.c: 
 This is tcpclient.c , An In-Depth Overview of TCP Connections, but it has been modified to make TLS connections.
+Linux user :./tls_client example.org 443</br> 
+Windows user :tls_client example.org 443</br> 
 
 ## https_get.c: 
 This is the webclientget.c program from Chapter 6, Building a Simple Web Client, but it has been modified for HTTPS. You can think of it as the extended version of https_simple.c.
