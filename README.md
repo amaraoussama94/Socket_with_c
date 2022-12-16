@@ -129,5 +129,17 @@ This is like https_simple.c, but it simply prints the connected server's certifi
 Linux user :./tls_get_cert example.org 443</br> 
 Windows user :tls_get_cert example.org 443</br> 
 
+## Self-signed certificates with OpenSSL : 
+OpenSSL asks questions about what to put on the certificate, including the subject, your name, company, location, and so on. You can use the defaults on all of these as this doesn't matter for our testing purposes.</br> 
+
+The basic command to self-sign a certificate is as follows:</br> 
+openssl req -x509 -newkey rsa:2048 -nodes -sha256 -keyout key.pem \-out cert.pem -days 365 </br> 
+
+You can also use OpenSSL to view a certificate. The following command does this:</br> 
+openssl x509 -text -noout -in cert.pem</br> 
+
+Windows using MSYS, you may get garbled line endings from the previous command. If so, try using unix2dos to fix it, as shown by the following command:</br> 
+openssl x509 -text -noout -in cert.pem | unix2dos </br> 
+
 ## Please attention  :
 for windows user please read the make file </br>
