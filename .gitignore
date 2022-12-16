@@ -2,6 +2,9 @@
 *.o
 .vscode
 
+#certif file 
+cert.pem
+key.pem
 
 #app of windows to ignore 
 *.exe
