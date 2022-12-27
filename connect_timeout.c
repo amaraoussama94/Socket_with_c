@@ -1,5 +1,5 @@
 
-/***** arg : @Ip and port number ****/
+/***** arg :connect_timeout hostname port****/
 #include "macrosheaderwx.h"
  
 
@@ -55,11 +55,13 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-
+    //Set the socket to non-blocking operation.
     #if defined(_WIN32)
+    //On Windows, the ioctlsocket() function is used with the FIONBIO flag to indicate non-blocking socket operation.
         unsigned long nonblock = 1;
         ioctlsocket(socket_peer, FIONBIO, &nonblock);
     #else
+    //On non-Windows systems, the fcntl() function is used to set the O_NONBLOCK flag for the same purpose.
         int flags;
         flags = fcntl(socket_peer, F_GETFL, 0);
         fcntl(socket_peer, F_SETFL, flags | O_NONBLOCK);
@@ -76,7 +78,7 @@ int main(int argc, char *argv[])
     }
 
     freeaddrinfo(peer_address);
-
+    //In step 5, setting the socket back to non-blocking mode is accomplished with the following code:
     #if defined(_WIN32)
         nonblock = 0;
         ioctlsocket(socket_peer, FIONBIO, &nonblock);
