@@ -188,6 +188,8 @@ how to use :</br>
 -ssh_download.exe 127.0.0.1(@IP of the server ) 22 (Port number   ) alice</br> 
  ssh_auth was used to successfully authenticate with the  locally running SSH server. The ssh_auth program used password authentication with the username alice and the password password123. Needless to say, you need to change the username and password as appropriate for your SSH server</br> 
 
+## error_text.c :
+ display a text-based error message in addition tothe error code .</br>
 
 ## Please attention  :
 for windows user please read the make file </br>
