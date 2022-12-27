@@ -2,6 +2,7 @@
 /** display a text-based error message in**/
 /**     addition tothe error code        **/
 /******************************************/
+#include "macrosheaderwx.h"
 const char *get_error_text() 
 {
     #if defined(_WIN32)
