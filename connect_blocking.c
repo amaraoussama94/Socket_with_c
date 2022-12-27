@@ -2,7 +2,7 @@
 /**Usually, when we call connect() on a TCP socket, connect() blocks until**/
 /**         the connection is established  this exemple to list this      **/
 /***************************************************************************/
-/***** arg : @Ip and port number ****/
+/***** arg : connect_blocking hostname port ****/
 #include "macrosheaderwx.h"
  
 
