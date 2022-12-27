@@ -42,3 +42,4 @@ ssh_auth
 ssh_command
 ssh_download
 error_text
+connect_blocking
