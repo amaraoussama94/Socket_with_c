@@ -38,6 +38,9 @@
 #include <netdb.h>
 #include <unistd.h>
 #include <errno.h>
+/**********************************/
+//uncomment this for 
+#include <fcntl.h>
 
 #endif
 #include <openssl/crypto.h>
@@ -62,11 +65,11 @@
 #include <string.h>
 #include <stdlib.h>
 // for webclientget and smtp_send uncomment it 
-#include <time.h> 
+//#include <time.h> 
 
 // for https_simple uncomment it 
-#include <openssl/crypto.h>
+/*#include <openssl/crypto.h>
 #include <openssl/x509.h>
 #include <openssl/pem.h>
 #include <openssl/ssl.h>
-#include <openssl/err.h>
+#include <openssl/err.h>*/
