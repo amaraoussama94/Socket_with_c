@@ -212,5 +212,7 @@ PS :You can use the netstat command to see these half-dead connections that are 
 
 As long as one of these connections is hanging on, it prevents any new process from calling bind() on the same local port and address. This failure of the bind() call can be prevented by setting the SO_REUSEADDR flag on the server socket before calling bind(). Once the SO_REUSEADDR flag is set, bind() succeeds even if a few TIME-WAIT connections are still hanging on to the same local port and address. An example program, server_reuse.c, is included to demonstrate this technique.</br>
 
+Just run server and use  any exemeple for the client with port number 8080</br>
+
 ## Please attention  :
 for windows user please read the make file </br>
