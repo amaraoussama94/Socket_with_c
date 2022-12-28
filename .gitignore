@@ -47,3 +47,4 @@ connect_timeout
 big_send
 server_ignore
 server_noreuse
+server_reuse
