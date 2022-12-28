@@ -194,8 +194,8 @@ how to use :</br>
 ##  connect_blocking.c  connect_timeout.c :
 connect_timeout.c in is a working example of the connect() timeout method using select(). An additional example, connect_blocking.c, is also included for comparison .</br>
 how to use :</br> 
--./ssh_download   127.0.0.1(@IP of the server ) 22 (Port number   ) </br> 
--ssh_download.exe 127.0.0.1(@IP of the server ) 22 (Port number   )  </br> 
+-./connect_blocking (or ./connect_timeout)   127.0.0.1(@IP of the server ) 22 (Port number   ) </br> 
+-connect_blocking.exe (or connect_timeout.exe)  127.0.0.1(@IP of the server ) 22 (Port number   )  </br> 
 
 <p align="center"> <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/TCP%20three-way%20handshake.png" width="350" height="400" >  </p>
 
