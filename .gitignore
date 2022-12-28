@@ -43,3 +43,4 @@ ssh_command
 ssh_download
 error_text
 connect_blocking
+connect_timeout
