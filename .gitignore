@@ -44,3 +44,5 @@ ssh_download
 error_text
 connect_blocking
 connect_timeout
+big_send
+server_ignore
