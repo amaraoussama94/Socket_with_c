@@ -11,7 +11,7 @@ tcpserverfork:tcpserverfork.c
 clean:
 #cleanup all object file
 #	  -rm *.o $(objects) 
-	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat  tcpserverfork  udpclient  udp_recvfrom udp_serve_toupper udp_client_toupper webclientget webserver webserver2  smtp_send  openssl_version   https_simple   https_get tls_client  tls_get_cert   tls_time_server  https_server   libssh_test   ssh_connect   ssh_auth  ssh_command   ssh_download   error_text  connect_blocking  connect_timeout  big_send                                                                     
+	  -rm sock_init tcpclient tcpserver time_server unix_list tcpserverchat  tcpserverfork  udpclient  udp_recvfrom udp_serve_toupper udp_client_toupper webclientget webserver webserver2  smtp_send  openssl_version   https_simple   https_get tls_client  tls_get_cert   tls_time_server  https_server   libssh_test   ssh_connect   ssh_auth  ssh_command   ssh_download   error_text  connect_blocking  connect_timeout  big_send   server_ignore                                                                  
 
 
 #################################  Windows  ###########################################################################
