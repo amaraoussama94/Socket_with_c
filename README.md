@@ -214,5 +214,9 @@ As long as one of these connections is hanging on, it prevents any new process f
 
 Just run server and use  any exemeple for the client with port number 8080</br>
 
+## server_crash.c :
+This program accepts TCP connections on port 8080. It then waits for the client to disconnect, and then attempts two sends to that disconnected client. This program is useful as a tool to explore the return values, error codes, and function behavior in different scenarios.</br>
+
+
 ## Please attention  :
 for windows user please read the make file </br>
