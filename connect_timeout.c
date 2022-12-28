@@ -1,5 +1,5 @@
 
-/***** arg :connect_timeout hostname port****/
+/***** arg :@Ip of server  hostname port****/
 #include "macrosheaderwx.h"
  
 
