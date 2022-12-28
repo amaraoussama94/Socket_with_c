@@ -191,5 +191,8 @@ how to use :</br>
 ## error_text.c :
  display a text-based error message in addition tothe error code .</br>
 
+##  connect_blocking.c  connect_timeout.c :
+connect_timeout.c in is a working example of the connect() timeout method using select(). An additional example, connect_blocking.c, is also included for comparison .</br>
+
 ## Please attention  :
 for windows user please read the make file </br>
