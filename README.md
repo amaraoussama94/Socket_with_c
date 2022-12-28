@@ -197,5 +197,7 @@ how to use :</br>
 -./ssh_download127.0.0.1(@IP of the server ) 22 (Port number   ) </br> 
 -ssh_download.exe 127.0.0.1(@IP of the server ) 22 (Port number   )  </br> 
 
+<p align="center"> <img src="hhttps://github.com/amaraoussama94/Socket_with_c/blob/main/TCP%20three-way%20handshake.png" width="350" height="600" >  </p>
+
 ## Please attention  :
 for windows user please read the make file </br>
