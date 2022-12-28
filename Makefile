@@ -170,15 +170,20 @@ ssh_download:ssh_download.c
 error_text:error_text.c  
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc error_text.c   -o error_text   
-#	gcc error_text.c  -o error_text.exe    
+#	gcc error_text.c  -o error_text.exe   -lws2_32  
 
 connect_blocking:connect_blocking.c  
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc connect_blocking.c   -o connect_blocking   
-#	gcc connect_blocking.c  -o connect_blocking.exe   
+#	gcc connect_blocking.c  -o connect_blocking.exe    -lws2_32
 
 
 connect_timeout:connect_timeout.c  
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc connect_timeout.c   -o connect_timeout   
-#	gcc connect_timeout.c  -o connect_timeout.exe 
+#	gcc connect_timeout.c  -o connect_timeout.exe  -lws2_32
+
+big_send:big_send.c  
+# for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
+	gcc big_send.c   -o big_send   
+#	gcc big_send.c  -o big_send.exe   -lws2_32
