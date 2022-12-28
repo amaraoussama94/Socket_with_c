@@ -204,5 +204,13 @@ server_ignore.c, implements a simple TCP server that accepts connections and the
 how to use :</br> 
 - ./server_ignore </br> ./big_send @IP 8080 </br>
 - server_ignore.exe </br>  big_send.exe @IP 8080 </br>
+
+## server_noreuse.c :
+Essentially, when an application initiates a TCP socket close (or causes the disconnection by crashing), that socket goes into the TIME-WAIT state. The operating system continues to keep track of this socket for some time, potentially minutes.You can reproduce this address-in-use problem by running it, accepting a connection, and then terminating server_noreuse. To reproduce the problem, it is vital that the server is the  one to terminate the open connection, not the client.</br>
+
+PS :You can use the netstat command to see these half-dead connections that are preventing our server from starting. The following command shows which connections are stuck in the TIME-WAIT state on Linux:   netstat -na | grep TIME</br>
+
+As long as one of these connections is hanging on, it prevents any new process from calling bind() on the same local port and address. This failure of the bind() call can be prevented by setting the SO_REUSEADDR flag on the server socket before calling bind(). Once the SO_REUSEADDR flag is set, bind() succeeds even if a few TIME-WAIT connections are still hanging on to the same local port and address. An example program, server_reuse.c, is included to demonstrate this technique.</br>
+
 ## Please attention  :
 for windows user please read the make file </br>
