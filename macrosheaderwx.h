@@ -39,7 +39,7 @@
 #include <unistd.h>
 #include <errno.h>
 /***********************
-//uncomment this for 
+//uncomment this for big send ,connect_* ,error_txt ,server_*,setsize 
 #include <fcntl.h>***********/
 
 #endif
@@ -63,7 +63,7 @@
 // for webclientget and smtp_send uncomment it 
 //#include <time.h> 
 
-// for https_simple uncomment it 
+// for https_*  , tls_* , openssl uncomment it 
 /*#include <openssl/crypto.h>
 #include <openssl/x509.h>
 #include <openssl/pem.h>
