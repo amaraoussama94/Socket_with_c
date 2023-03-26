@@ -220,3 +220,7 @@ This program accepts TCP connections on port 8080. It then waits for the client 
 
 ## Please attention  :
 for windows user please read the make file </br>
+To install openssl in windows :</br>
+run powershell  using Administrator mode in Windows. :</br>
+choco install openssl</br>
+
