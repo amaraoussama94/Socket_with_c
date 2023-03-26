@@ -38,16 +38,12 @@
 #include <netdb.h>
 #include <unistd.h>
 #include <errno.h>
-/**********************************/
+/***********************
 //uncomment this for 
-#include <fcntl.h>
+#include <fcntl.h>***********/
 
 #endif
-#include <openssl/crypto.h>
-#include <openssl/x509.h>
-#include <openssl/pem.h>
-#include <openssl/ssl.h>
-#include <openssl/err.h>
+
 #if defined(_WIN32)
 #define ISVALIDSOCKET(s) ((s) != INVALID_SOCKET)
 #define CLOSESOCKET(s) closesocket(s)
