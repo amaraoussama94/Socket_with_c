@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
         }
 
         #if defined(_WIN32)
-            if(_kbhit()) udp_client_toupper
+            if(_kbhit()) 
             {
         #else
             if(FD_ISSET(0, &reads)) 
