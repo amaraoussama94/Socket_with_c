@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     //0 in for the service argument because we don't care about the port number
     if (getaddrinfo(argv[1], 0, &hints, &peer_address)) 
     {
-        fprintf(stexample.comderr, "getaddrinfo() failed. (%d)\n", GETSOCKETERRNO());
+        fprintf(stderr, "getaddrinfo() failed. (%d)\n", GETSOCKETERRNO());
         return 1;
     }
     //Now that peer_address holds the desired address(es), we can use getnameinfo() to
