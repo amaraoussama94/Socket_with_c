@@ -90,6 +90,8 @@ struct client_info
     socklen_t address_length;
     struct sockaddr_storage address;
     SOCKET socket;
+
+    char address_buffer[128];
     char request[MAX_REQUEST_SIZE + 1];
     //number of bytes stored in that array
     int received;
