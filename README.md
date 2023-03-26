@@ -41,11 +41,12 @@ Simple server that just translates a string sending by client to  all uppercase 
 <p align="center"> <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/TCp%20Server.png" width="350" height="600" >  </p>
 
 ### tcpserverchat.c:
-Simple server that just translates a string sending by client to  all uppercase  string. This serves serve any number of  client  simultaneously with no blocking or  delay ,each client will all string that he send to server all uper and the other string send by the other client  .</br>Port fixed to 8080 , accept both ip4 and ip6</br>
+Simple server that just translates a string sending by client to  all uppercase  string. This serves serve any number of  client  simultaneously with no blocking or  delay ,each client will see  all string that he send to server all uper and the other string send by the other client  .</br>Port fixed to 8080 , accept both ip4 and ip6</br>
 
 ### udp_recvfrom.c :
 Simple UDP server.It will accept any incoming msg  from UDP client.</br>
 <p align="center"> <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/udpserver.png" width="350" height="600" >  </p>
+for test run : udp_client 127.0.0.1 8080
 
 ### udpclient.c :
 The simple UPD client handles 2 cm argument  @IP and port number. Then you start sending msg .PS there's no test if the msg reaches the server or no in this code .</br>
@@ -54,6 +55,8 @@ The simple UPD client handles 2 cm argument  @IP and port number. Then you start
 ### udp_serve_toupper.c :
 Its  same like TCP. We just  use  UDP instead of TCP. We  also use  fork style  to handle multiclient request </br>
 <p align="center"> <img src="https://github.com/amaraoussama94/Socket_with_c/blob/main/udpserverupper.png" width="350" height="600" >  </p>
+
+to test run : .\udp_client_toupper  127.0.0.1 8080
 
 ###  udp_serve_toupper_simple.c :
 Same like the other  server using simple methods  . </br>
