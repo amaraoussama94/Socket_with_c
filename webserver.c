@@ -255,7 +255,7 @@ void serve_resource(struct client_info *client, const char *path)
     #if defined(_WIN32)
         char *p = full_path;
         while (*p) 
-        {.
+        {
         //'\\' is equivalent to only one backslash. This is because the backslash has special meaning in C, and therefore
         //the first backslash is used to escape the secondbackslash
             if (*p == '/') 
