@@ -10,7 +10,7 @@
 #include <ws2tcpip.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <winerror.h>
 #pragma comment(lib, "ws2_32.lib")
 #pragma comment(lib, "iphlpapi.lib")
 
