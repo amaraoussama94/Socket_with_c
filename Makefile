@@ -88,7 +88,7 @@ dns_query:dns_query.c
 webclientget:Parsing_URL.c webclientget.c
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
 	gcc Parsing_URL.c webclientget.c   -o webclientget
-#	gcc Parsing_URL.c webclientgets.c -o webclientget.exe -lws2_32
+#	gcc Parsing_URL.c webclientget.c -o webclientget.exe -lws2_32
 
 webserver:webserver.c  
 # for both windows and linux  user if you use MinGW comp and windows please comment this and uncomment the 2nd line
